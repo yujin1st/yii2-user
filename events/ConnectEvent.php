@@ -1,0 +1,62 @@
+<?php
+
+/*
+ * This file is part of the yujin1st project.
+ *
+ * (c) yujin1st project <http://github.com/yujin1st/>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+namespace yujin1st\user\events;
+
+use yii\base\Event;
+use yujin1st\user\models\Account;
+use yujin1st\user\models\User;
+
+/**
+ * @property User $model
+ * @property Account $account
+ * @author Dmitry Erofeev <dmeroff@gmail.com>
+ */
+class ConnectEvent extends Event
+{
+  /**
+   * @var User
+   */
+  private $_user;
+
+  /**
+   * @var Account
+   */
+  private $_account;
+
+  /**
+   * @return Account
+   */
+  public function getAccount() {
+    return $this->_account;
+  }
+
+  /**
+   * @param Account $account
+   */
+  public function setAccount(Account $account) {
+    $this->_account = $account;
+  }
+
+  /**
+   * @return User
+   */
+  public function getUser() {
+    return $this->_user;
+  }
+
+  /**
+   * @param User $user
+   */
+  public function setUser(User $user) {
+    $this->_user = $user;
+  }
+}

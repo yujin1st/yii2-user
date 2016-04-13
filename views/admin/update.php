@@ -46,7 +46,6 @@ $this->params['breadcrumbs'][] = $this->title;
             [
               'label' => Yii::t('user', 'Assignments'),
               'url' => ['/user/admin/assignments', 'id' => $user->id],
-              'visible' => isset(Yii::$app->extensions['yujin1st/yii2-rbac']),
             ],
             '<hr>',
             [

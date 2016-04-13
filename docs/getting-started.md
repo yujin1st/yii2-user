@@ -29,15 +29,29 @@ Add following lines to your main configuration file:
 ],
 ```
 
-### 3. Update database schema
+### 3. Update database schema and init roles
 
 The last thing you need to do is updating your database schema by applying the
 migrations. Make sure that you have properly configured `db` application component
-and run the following command:
+and run the following commands:
 
+Setup rbac migration: 
 ```bash
-$ php yii migrate/up --migrationPath=@vendor/yujin1st/yii2-user/migrations
+$ php yii migrate --migrationPath=@yii/rbac/migrations
 ```
+Setup users module migration
+```bash
+$ php yii migrate --migrationPath=@vendor/yujin1st/yii2-user/migrations
+```
+
+Setup all rbac rules
+```bash
+$ php yii user/rbac/init
+```
+
+
+
+
 
 ## Where do I go now?
 

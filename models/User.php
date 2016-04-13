@@ -23,6 +23,7 @@ use yujin1st\user\helpers\Password;
 use yujin1st\user\Mailer;
 use yujin1st\user\models\query\UserQuery;
 use yujin1st\user\Module;
+use yujin1st\user\rbac\Access;
 use yujin1st\user\traits\ModuleTrait;
 
 /**
@@ -45,6 +46,8 @@ use yujin1st\user\traits\ModuleTrait;
  * @property integer $createTime
  * @property integer $updateTime
  * @property integer $flags
+ *
+ * @property array $roles
  *
  * Defined relations:
  * @property Account[] $accounts
@@ -72,12 +75,22 @@ class User extends ActiveRecord implements IdentityInterface
   /** @var string Plain password. Used for model validation. */
   public $password;
 
+  /** @var  array User roles */
+  public $_roles;
+
   /** @var Profile|null */
   private $_profile;
 
   /** @var string Default username regexp */
   public static $usernameRegexp = '/^[-a-zA-Z0-9_\.@]+$/';
 
+
+  const SCENARIO_CREATE = 'create';
+  const SCENARIO_UPDATE = 'update';
+  const SCENARIO_UPDATE_ROLES = 'update_roles';
+  const SCENARIO_CONNECT = 'connect';
+  const SCENARIO_REGISTER = 'register';
+  const SCENARIO_REGISTER_MANUALLY = 'register_manually';
 
   /**
    * @inheritdoc
@@ -165,6 +178,7 @@ class User extends ActiveRecord implements IdentityInterface
       'password' => Yii::t('user', 'Password'),
       'createTime' => Yii::t('user', 'Registration time'),
       'confirmTime' => Yii::t('user', 'Confirmation time'),
+      'roles' => Yii::t('user', 'Roles'),
     ];
   }
 
@@ -183,10 +197,13 @@ class User extends ActiveRecord implements IdentityInterface
   public function scenarios() {
     $scenarios = parent::scenarios();
     return ArrayHelper::merge($scenarios, [
-      'register' => ['username', 'email', 'password'],
-      'connect' => ['username', 'email'],
-      'create' => ['username', 'email', 'password'],
-      'update' => ['username', 'email', 'password'],
+      self::SCENARIO_REGISTER => ['username', 'email', 'password'],
+      self::SCENARIO_REGISTER_MANUALLY => ['username', 'email', 'password'],
+      self::SCENARIO_UPDATE_ROLES => ['roles'],
+      self::SCENARIO_CREATE => ['username', 'email', 'password'],
+      self::SCENARIO_CONNECT => ['username', 'email'],
+      self::SCENARIO_UPDATE => ['username', 'email', 'password'],
+
       'settings' => ['username', 'email', 'password'],
     ]);
   }
@@ -195,14 +212,27 @@ class User extends ActiveRecord implements IdentityInterface
   public function rules() {
     return [
       // username rules
-      'usernameRequired' => ['username', 'required', 'on' => ['register', 'create', 'connect', 'update']],
+      'usernameRequired' => [
+        'username', 'required', 'on' => [
+          self::SCENARIO_REGISTER,
+          self::SCENARIO_CREATE,
+          self::SCENARIO_CONNECT,
+          self::SCENARIO_UPDATE,
+          self::SCENARIO_REGISTER_MANUALLY
+        ]
+      ],
       'usernameMatch' => ['username', 'match', 'pattern' => static::$usernameRegexp],
       'usernameLength' => ['username', 'string', 'min' => 3, 'max' => 255],
       'usernameUnique' => ['username', 'unique', 'message' => Yii::t('user', 'This username has already been taken')],
       'usernameTrim' => ['username', 'trim'],
 
       // email rules
-      'emailRequired' => ['email', 'required', 'on' => ['register', 'connect', 'create', 'update']],
+      'emailRequired' => [
+        'email', 'required', 'on' => [
+          self::SCENARIO_REGISTER,
+          self::SCENARIO_CONNECT,
+        ]
+      ],
       'emailPattern' => ['email', 'email'],
       'emailLength' => ['email', 'string', 'max' => 255],
       'emailUnique' => ['email', 'unique', 'message' => Yii::t('user', 'This email address has already been taken')],
@@ -238,7 +268,7 @@ class User extends ActiveRecord implements IdentityInterface
       return false;
     }
 
-    $this->mailer->sendWelcomeMessage($this, null, true);
+    if ($this->email) $this->mailer->sendWelcomeMessage($this, null, true);
     $this->trigger(self::AFTER_CREATE);
 
     return true;
@@ -271,7 +301,8 @@ class User extends ActiveRecord implements IdentityInterface
       $token->link('user', $this);
     }
 
-    $this->mailer->sendWelcomeMessage($this, isset($token) ? $token : null);
+    if ($this->email) $this->mailer->sendWelcomeMessage($this, isset($token) ? $token : null);
+
     $this->trigger(self::AFTER_REGISTER);
 
     return true;
@@ -440,9 +471,23 @@ class User extends ActiveRecord implements IdentityInterface
     parent::afterSave($insert, $changedAttributes);
     if ($insert) {
       if ($this->_profile == null) {
-        $this->_profile = Yii::createObject(Profile::className());
+        $this->_profile = new Profile();
       }
       $this->_profile->link('user', $this);
+    }
+
+    if ($insert) {
+      // по умолчанию роль сотрудника с базовыми правами
+      $auth = Yii::$app->authManager;
+      $auth->assign($auth->getRole(Access::ROLE_USER), $this->id);
+    }
+
+    if ($this->scenario == self::SCENARIO_UPDATE_ROLES) {
+      $auth = Yii::$app->authManager;
+      $auth->revokeAll($this->id);
+      foreach ($this->_roles as $role) {
+        $auth->assign($auth->getRole($role), $this->id);
+      }
     }
   }
 
@@ -497,5 +542,34 @@ class User extends ActiveRecord implements IdentityInterface
   public static function findIdentityByAccessToken($token, $type = null) {
     throw new NotSupportedException('Method "' . __CLASS__ . '::' . __METHOD__ . '" is not implemented.');
   }
+
+
+  /**
+   * @return array
+   */
+  public function getRoles() {
+    $auth = Yii::$app->authManager;
+    return $this->isNewRecord ? [] : ArrayHelper::map($auth->getRolesByUser($this->id), 'name', 'name');
+  }
+
+  /**
+   * @return array
+   */
+  public function getRolesTitles() {
+    $titles = [];
+    foreach ($this->roles as $role) {
+      $record = Yii::$app->authManager->getRole($role);
+      $titles[] = $record->description ?: $record->name;
+    }
+    return implode(', ', $titles);
+  }
+
+  /**
+   * @param array $roles
+   */
+  public function setRoles($roles) {
+    $this->_roles = $roles ?: [];
+  }
+
 
 }

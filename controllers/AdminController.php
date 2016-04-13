@@ -21,11 +21,11 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
 use yii\widgets\ActiveForm;
-use yujin1st\user\filters\AccessRule;
 use yujin1st\user\models\Profile;
 use yujin1st\user\models\search\UserSearch;
 use yujin1st\user\models\User;
 use yujin1st\user\Module;
+use yujin1st\user\rbac\Access;
 use yujin1st\user\traits\EventTrait;
 
 /**
@@ -74,6 +74,18 @@ class AdminController extends Controller
    * Triggered with \yujin1st\user\events\UserEvent.
    */
   const EVENT_AFTER_PROFILE_UPDATE = 'afterProfileUpdate';
+
+  /**
+   * Event is triggered before updating existing user's roles.
+   * Triggered with \yujin1st\user\events\UserEvent.
+   */
+  const EVENT_BEFORE_ROLES_UPDATE = 'beforeRolesUpdate';
+
+  /**
+   * Event is triggered after updating existing user's roles.
+   * Triggered with \yujin1st\user\events\UserEvent.
+   */
+  const EVENT_AFTER_ROLES_UPDATE = 'afterRolesUpdate';
 
   /**
    * Event is triggered before confirming existing user.
@@ -137,13 +149,10 @@ class AdminController extends Controller
       ],
       'access' => [
         'class' => AccessControl::className(),
-        'ruleConfig' => [
-          'class' => AccessRule::className(),
-        ],
         'rules' => [
           [
             'allow' => true,
-            'roles' => ['admin'],
+            'roles' => [Access::USER_VIEW],
           ],
         ],
       ],
@@ -175,7 +184,7 @@ class AdminController extends Controller
   public function actionCreate() {
     /** @var User $user */
     $user = new User();
-    $user->scenario = 'create';
+    $user->scenario = User::SCENARIO_CREATE;
     $event = $this->getUserEvent($user);
 
     $this->performAjaxValidation($user);
@@ -202,7 +211,7 @@ class AdminController extends Controller
   public function actionUpdate($id) {
     Url::remember('', 'actions-redirect');
     $user = $this->findModel($id);
-    $user->scenario = 'update';
+    $user->scenario = User::SCENARIO_UPDATE;
     $event = $this->getUserEvent($user);
 
     $this->performAjaxValidation($user);
@@ -279,11 +288,20 @@ class AdminController extends Controller
    * @throws NotFoundHttpException
    */
   public function actionAssignments($id) {
-    if (!isset(Yii::$app->extensions['yujin1st/yii2-rbac'])) {
-      throw new NotFoundHttpException();
-    }
     Url::remember('', 'actions-redirect');
     $user = $this->findModel($id);
+    $user->scenario = User::SCENARIO_UPDATE_ROLES;
+
+    $event = $this->getUserEvent($user);
+
+    $this->performAjaxValidation($user);
+
+    $this->trigger(self::EVENT_BEFORE_ROLES_UPDATE, $event);
+    if ($user->load(Yii::$app->request->post()) && $user->save()) {
+      Yii::$app->getSession()->setFlash('success', Yii::t('user', 'Account roles have been updated'));
+      $this->trigger(self::EVENT_BEFORE_ROLES_UPDATE, $event);
+      return $this->refresh();
+    }
 
     return $this->render('_assignments', [
       'user' => $user,

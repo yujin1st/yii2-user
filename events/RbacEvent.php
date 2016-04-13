@@ -30,11 +30,12 @@ class RbacEvent extends Event
    * @param $name string|AccessInterface
    */
   public function addClass($name) {
+    if (is_string($name)) $name = new $name;
     $this->_classes[] = $name;
   }
 
   /**
-   * @return string[]|AccessInterface[];
+   * @return AccessInterface[];
    */
   public function getClasses() {
     return $this->_classes;

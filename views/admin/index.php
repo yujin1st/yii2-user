@@ -40,8 +40,24 @@ $this->params['breadcrumbs'][] = $this->title;
   'filterModel' => $searchModel,
   'layout' => "{items}\n{pager}",
   'columns' => [
-    'username',
-    'email:email',
+    [
+      'attribute' => 'username',
+      'format' => 'raw',
+      'value' => function ($model) {
+        /** @var \yujin1st\user\models\User $model */
+        return Html::a($model->username, ['update', 'id' => $model->id]);
+      },
+    ],
+
+    [
+      'attribute' => 'email',
+      'format' => 'raw',
+      'value' => function ($model) {
+        /** @var \yujin1st\user\models\User $model */
+        return Html::a($model->email, ['update', 'id' => $model->id]);
+      },
+    ],
+
     [
       'attribute' => 'registrationIp',
       'value' => function ($model) {
@@ -51,6 +67,7 @@ $this->params['breadcrumbs'][] = $this->title;
       },
       'format' => 'html',
     ],
+
     [
       'attribute' => 'createTime',
       'value' => function ($model) {
@@ -69,6 +86,7 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
       ]),
     ],
+
     [
       'header' => Yii::t('user', 'Confirmation'),
       'value' => function ($model) {
@@ -85,6 +103,7 @@ $this->params['breadcrumbs'][] = $this->title;
       'format' => 'raw',
       'visible' => Yii::$app->getModule('user')->enableConfirmation,
     ],
+
     [
       'header' => Yii::t('user', 'Block status'),
       'value' => function ($model) {
@@ -104,6 +123,7 @@ $this->params['breadcrumbs'][] = $this->title;
       },
       'format' => 'raw',
     ],
+
     [
       'class' => 'yii\grid\ActionColumn',
       'template' => '{update} {delete}',

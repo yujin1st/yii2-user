@@ -19,8 +19,8 @@ class m140209_132017_init extends Migration
   public function up() {
     $this->createTable('{{%user}}', [
       'id' => $this->primaryKey(),
-      'username' => $this->string(255)->notNull(),
-      'email' => $this->string(255)->notNull(),
+      'username' => $this->string(255),
+      'email' => $this->string(255),
       'passwordHash' => $this->string(60)->notNull(),
       'authKey' => $this->string(32)->notNull(),
       'confirmTime' => $this->integer(),
@@ -32,9 +32,8 @@ class m140209_132017_init extends Migration
       'flags' => $this->integer()->notNull()->defaultValue(0),
     ], $this->tableOptions);
 
-
-    $this->createIndex('user_unique_username', '{{%user}}', 'username', true);
-    $this->createIndex('user_unique_email', '{{%user}}', 'email', true);
+    //$this->createIndex('user_unique_username', '{{%user}}', 'username', true);
+    //$this->createIndex('user_unique_email', '{{%user}}', 'email', true);
 
     $this->createTable('{{%profile}}', [
       'userId' => $this->primaryKey(),

@@ -4,6 +4,7 @@ namespace yujin1st\user\rbac;
 
 use yii;
 use yujin1st\user\events\RbacEvent;
+use yujin1st\user\models\User;
 
 /**
  *
@@ -34,10 +35,12 @@ class Rbac extends yii\base\Component
     }
 
     $rolesPermissions = $access->rolesPermissions();
+    $rolesTitles = $access->rolesTitles();
     foreach ($rolesPermissions as $roleName => $permissions) {
       $role = $auth->getRole($roleName);
       if (!$role) {
         $role = $auth->createRole($roleName);
+        $role->description = $rolesTitles[$roleName];
         $auth->add($role);
       }
 
@@ -55,17 +58,38 @@ class Rbac extends yii\base\Component
    * Collecting and initialising roles over all app
    */
   public function initRolesAndActions() {
+    $classes = $this->loadClasses();
+    foreach ($classes as $item) {
+      $this->initRolesForClass($item);
+    }
+  }
+
+  /**
+   * @return AccessInterface[]
+   */
+  public function loadClasses() {
     $event = new RbacEvent();
     Yii::$app->trigger(self::EVENT_COLLECT_ROLES, $event);
+    return $event->classes;
+  }
 
-    if ($event->classes) foreach ($event->classes as $item) {
-      if (is_string($item)) {
-        $this->initRolesForClass(new $item);
-      } elseif ($item instanceof AccessInterface) {
-        $this->initRolesForClass($item);
+
+  /**
+   * Set admin roles to user
+   *
+   * @param $user User
+   */
+  public function setAdminRole($user) {
+    $classes = $this->loadClasses();
+
+    $auth = Yii::$app->authManager;
+    $auth->revokeAll($user->id);
+
+    foreach ($classes as $item) {
+      foreach ($item->adminRoles() as $role) {
+        $auth->assign($auth->getRole($role), $user->id);
       }
     }
 
   }
-
 }

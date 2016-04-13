@@ -15,7 +15,7 @@ use yii;
 use yii\console\Controller;
 use yii\helpers\Console;
 use yujin1st\user\models\User;
-use yujin1st\user\rbac\Access;
+use yujin1st\user\rbac\Rbac;
 
 /**
  * Confirms a user.
@@ -24,7 +24,7 @@ use yujin1st\user\rbac\Access;
  *
  * @author Dmitry Erofeev <dmeroff@gmail.com>
  */
-class DefaultController extends Controller
+class ManageController extends Controller
 {
 
   /**
@@ -113,6 +113,7 @@ class DefaultController extends Controller
     }
   }
 
+
   /**
    * Назначение пользователю прав администратора
    *
@@ -121,14 +122,11 @@ class DefaultController extends Controller
   public function actionAdmin($search) {
     $user = User::findIdentityByUsernameOrEmail($search);
     if ($user) {
-      $auth = Yii::$app->authManager;
-      $auth->revokeAll($user->id);
-      foreach (Access::$adminRoles as $role) {
-        $auth->assign($auth->getRole($role), $person->id);
-      }
+      $rbac = new Rbac();
+      $rbac->setAdminRole($user);
+      $this->stdout(Yii::t('user', 'Admin rights granted') . "\n", Console::FG_GREEN);
     } else {
       $this->stdout(Yii::t('user', 'User is not found') . "\n", Console::FG_RED);
     }
   }
-
 }

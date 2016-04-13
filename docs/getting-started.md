@@ -29,6 +29,14 @@ Add following lines to your main configuration file:
 ],
 ```
 
+For initialising rbac roles and permissions use event. yujin1st\user\Module::EVENT_COLLECT_ROLES
+```php
+   'on collectRoles' => function ($event) {
+      /** @var $event \yujin1st\user\events\RbacEvent */
+      $event->addClass(\rbac\Access::className());
+    }
+```
+
 ### 3. Update database schema and init roles
 
 The last thing you need to do is updating your database schema by applying the

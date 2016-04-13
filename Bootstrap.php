@@ -18,7 +18,6 @@ use yii\console\Application as ConsoleApplication;
 use yii\i18n\PhpMessageSource;
 use yujin1st\user\events\RbacEvent;
 use yujin1st\user\rbac\Access;
-use yujin1st\user\rbac\Rbac;
 
 /**
  * Bootstrap class registers module and user application component. It also creates some url rules which will be applied
@@ -93,12 +92,12 @@ class Bootstrap implements BootstrapInterface
         ];
       }
 
-      Yii::$app->on(Rbac::EVENT_COLLECT_ROLES, function ($event) {
+      $module->on(Module::EVENT_COLLECT_ROLES, function ($event) {
         /** @var $event RbacEvent */
         $event->addClass(Access::className());
       });
 
-      
+
       Yii::$container->set('yujin1st\user\Mailer', $module->mailer);
     }
   }

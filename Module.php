@@ -78,6 +78,9 @@ class Module extends BaseModule
   /** @var array Model map */
   public $modelMap = [];
 
+  /** global event for collecting app rbac rules */
+  const EVENT_COLLECT_ROLES = 'collectRoles';
+
   /**
    * @var string The prefix for user module URL.
    *

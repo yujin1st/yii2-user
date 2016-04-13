@@ -5,6 +5,7 @@ namespace yujin1st\user\rbac;
 use yii;
 use yujin1st\user\events\RbacEvent;
 use yujin1st\user\models\User;
+use yujin1st\user\Module;
 
 /**
  *
@@ -14,8 +15,6 @@ use yujin1st\user\models\User;
  */
 class Rbac extends yii\base\Component
 {
-  /** global event for collecting app rbac rules */
-  const EVENT_COLLECT_ROLES = 'user.collectRoles';
 
   /**
    * init roles for extension class
@@ -69,7 +68,7 @@ class Rbac extends yii\base\Component
    */
   public function loadClasses() {
     $event = new RbacEvent();
-    Yii::$app->trigger(self::EVENT_COLLECT_ROLES, $event);
+    Yii::$app->trigger(Module::EVENT_COLLECT_ROLES, $event);
     return $event->classes;
   }
 

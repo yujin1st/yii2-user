@@ -11,7 +11,13 @@
 
 namespace yujin1st\user;
 
+use yii;
+use yii\authclient\Collection;
 use yii\base\Module as BaseModule;
+use yii\console\Application as ConsoleApplication;
+use yii\i18n\PhpMessageSource;
+use yujin1st\user\events\RbacEvent;
+use yujin1st\user\rbac\Access;
 
 /**
  * This is the main module class for the Yii2-user.
@@ -88,6 +94,7 @@ class Module extends BaseModule
    */
   public $urlPrefix = 'user';
 
+
   /** @var array The rules to be used in URL management. */
   public $urlRules = [
     '<id:\d+>' => 'profile/show',
@@ -98,4 +105,96 @@ class Module extends BaseModule
     'recover/<id:\d+>/<code:[A-Za-z0-9_-]+>' => 'recovery/reset',
     'settings/<action:\w+>' => 'settings/<action>'
   ];
+
+
+  /** @var array Model's map */
+  private $_modelMap = [
+    'User' => 'yujin1st\user\models\User',
+    'Account' => 'yujin1st\user\models\Account',
+    'Profile' => 'yujin1st\user\models\Profile',
+    'Token' => 'yujin1st\user\models\Token',
+    'RegistrationForm' => 'yujin1st\user\models\RegistrationForm',
+    'ResendForm' => 'yujin1st\user\models\ResendForm',
+    'LoginForm' => 'yujin1st\user\models\LoginForm',
+    'SettingsForm' => 'yujin1st\user\models\SettingsForm',
+    'RecoveryForm' => 'yujin1st\user\models\RecoveryForm',
+    'UserSearch' => 'yujin1st\user\models\search\UserSearch',
+  ];
+
+  /** @inheritdoc */
+  public function init() {
+    parent::init();
+    $this->bootstrap();
+  }
+
+  /**
+   *
+   */
+  public function setUrlRules() {
+    $configUrlRule = [
+      'prefix' => $this->urlPrefix,
+      'rules' => $this->urlRules,
+    ];
+
+    if ($this->urlPrefix != 'user') {
+      $configUrlRule['routePrefix'] = 'user';
+    }
+
+    $configUrlRule['class'] = 'yii\web\GroupUrlRule';
+    $rule = Yii::createObject($configUrlRule);
+
+    Yii::$app->urlManager->addRules([$rule], false);
+  }
+
+  /** @inheritdoc */
+  public function bootstrap() {
+    $app = Yii::$app;
+
+    /** @var \yii\db\ActiveRecord $modelName */
+    $this->_modelMap = array_merge($this->_modelMap, $this->modelMap);
+    foreach ($this->_modelMap as $name => $definition) {
+      $class = "yujin1st\\user\\models\\" . $name;
+      Yii::$container->set($class, $definition);
+      $modelName = is_array($definition) ? $definition['class'] : $definition;
+      $this->modelMap[$name] = $modelName;
+    }
+
+    if ($app instanceof ConsoleApplication) {
+      $this->controllerNamespace = 'yujin1st\user\commands';
+    } else {
+      $this->controllerNamespace = 'yujin1st\user\controllers';
+      $this->viewPath = '@yujin1st/user/views';
+
+      Yii::$container->set('yii\web\User', [
+        'enableAutoLogin' => true,
+        'loginUrl' => ['/user/security/login'],
+        'identityClass' => $this->modelMap['User'],
+      ]);
+
+      if (!$app->has('authClientCollection')) {
+        $app->set('authClientCollection', [
+          'class' => Collection::className(),
+        ]);
+      }
+    }
+
+    $this->setUrlRules();
+
+    if (!isset($app->get('i18n')->translations['user*'])) {
+      $app->get('i18n')->translations['user*'] = [
+        'class' => PhpMessageSource::className(),
+        'basePath' => __DIR__ . '/messages',
+        'sourceLanguage' => 'en-US'
+      ];
+    }
+
+    $this->on(Module::EVENT_COLLECT_ROLES, function ($event) {
+      /** @var $event RbacEvent */
+      $event->addClass(Access::className());
+    });
+
+
+    Yii::$container->set('yujin1st\user\Mailer', $this->mailer);
+  }
+
 }

@@ -43,11 +43,13 @@ class Rbac extends yii\base\Component
         $auth->add($role);
       }
 
-      $auth->removeChildren($role);
+      $oldPermissions = $auth->getPermissionsByRole($roleName);
 
       foreach ($permissions as $permissionName) {
-        $permission = $auth->getPermission($permissionName);
-        $auth->addChild($role, $permission);
+        if (!isset($oldPermissions[$permissionName])) {
+          $permission = $auth->getPermission($permissionName);
+          $auth->addChild($role, $permission);
+        }
       }
     }
 

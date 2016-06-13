@@ -84,7 +84,6 @@ class User extends ActiveRecord implements IdentityInterface
   /** @var string Default username regexp */
   public static $usernameRegexp = '/^[-a-zA-Z0-9_\.@]+$/';
 
-
   const SCENARIO_CREATE = 'create';
   const SCENARIO_UPDATE = 'update';
   const SCENARIO_UPDATE_ROLES = 'update_roles';
@@ -296,8 +295,7 @@ class User extends ActiveRecord implements IdentityInterface
 
     if ($this->module->enableConfirmation) {
       /** @var Token $token */
-      $token = new Token();
-      $token->type = Token::TYPE_CONFIRMATION;
+      $token = Yii::createObject(['class' => Token::className(), 'type' => Token::TYPE_CONFIRMATION]);
       $token->link('user', $this);
     }
 
@@ -471,7 +469,7 @@ class User extends ActiveRecord implements IdentityInterface
     parent::afterSave($insert, $changedAttributes);
     if ($insert) {
       if ($this->_profile == null) {
-        $this->_profile = new Profile();
+        $this->_profile = Yii::createObject(Profile::className());
       }
       $this->_profile->link('user', $this);
     }
@@ -500,7 +498,6 @@ class User extends ActiveRecord implements IdentityInterface
   public static function findIdentity($id) {
     return static::findOne($id);
   }
-
 
   /**
    * Finds a user by the given username.

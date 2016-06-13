@@ -101,8 +101,10 @@ class RegistrationForm extends Model
     }
 
     /** @var User $user */
-    $user = new User();
-    $user->setScenario('register');
+    $user = Yii::createObject([
+      'class' => User::className(),
+      'scenario' => User::SCENARIO_REGISTER,
+    ]);
     $this->loadAttributes($user);
 
     if (!$user->register()) {

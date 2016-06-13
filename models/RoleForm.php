@@ -122,7 +122,8 @@ class RoleForm extends Model
    *
    */
   private function loadRoles() {
-    $rbac = new Rbac();
+    /** @var Rbac $rbac */
+    $rbac = Yii::createObject(['class' => Rbac::className()]);
     $classes = $rbac->loadClasses();
     foreach ($classes as $class) {
       $this->groups = ArrayHelper::merge($this->groups, $class->roleGroups());

@@ -166,7 +166,9 @@ class AdminController extends Controller
    */
   public function actionIndex() {
     Url::remember('', 'actions-redirect');
-    $searchModel = new UserSearch();
+    $searchModel = Yii::createObject([
+      'class' => UserSearch::className(),
+    ]);
     $dataProvider = $searchModel->search(Yii::$app->request->get());
 
     return $this->render('index', [
@@ -183,7 +185,10 @@ class AdminController extends Controller
    */
   public function actionCreate() {
     /** @var User $user */
-    $user = new User();
+    $user = Yii::createObject([
+      'class' => User::className(),
+      'scenario' => User::SCENARIO_CREATE,
+    ]);
     $user->scenario = User::SCENARIO_CREATE;
     $event = $this->getUserEvent($user);
 
@@ -213,7 +218,6 @@ class AdminController extends Controller
     $user = $this->findModel($id);
     $user->scenario = User::SCENARIO_UPDATE;
     $event = $this->getUserEvent($user);
-
     $this->performAjaxValidation($user);
 
     $this->trigger(self::EVENT_BEFORE_UPDATE, $event);

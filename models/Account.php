@@ -11,6 +11,7 @@
 
 namespace yujin1st\user\models;
 
+use yii;
 use yii\authclient\ClientInterface as BaseClientInterface;
 use yii\db\ActiveRecord;
 use yii\helpers\Json;
@@ -111,7 +112,9 @@ class Account extends ActiveRecord
    * @throws \yii\base\InvalidConfigException
    */
   public static function create(BaseClientInterface $client) {
-    $account = new Account([
+    /** @var Account $account */
+    $account = Yii::createObject([
+      'class' => Account::className(),
       'provider' => $client->getId(),
       'clientId' => $client->getUserAttributes()['id'],
       'data' => Json::encode($client->getUserAttributes()),
@@ -167,7 +170,9 @@ class Account extends ActiveRecord
     $account = self::find()->byClient($client)->one();
 
     if (null === $account) {
-      $account = new Account([
+      /** @var Account $account */
+      $account = Yii::createObject([
+        'class' => Account::className(),
         'provider' => $client->getId(),
         'clientId' => $client->getUserAttributes()['id'],
         'data' => Json::encode($client->getUserAttributes()),
@@ -191,9 +196,9 @@ class Account extends ActiveRecord
     if (null !== $user) {
       return $user;
     }
-
-    $user = new User([
-      'scenario' => 'connect',
+    $user = Yii::createObject([
+      'class' => User::className(),
+      'scenario' => User::SCENARIO_CONNECT,
       'username' => $account->username,
       'email' => $account->email,
     ]);

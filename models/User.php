@@ -464,6 +464,15 @@ class User extends ActiveRecord implements IdentityInterface
     return parent::beforeSave($insert);
   }
 
+  /**
+   * Assign roles to new user
+   * Overwrite this method for own purposes
+   */
+  public function assignRoles() {
+    $auth = Yii::$app->authManager;
+    $auth->assign($auth->getRole(Access::ROLE_USER), $this->id);
+  }
+
   /** @inheritdoc */
   public function afterSave($insert, $changedAttributes) {
     parent::afterSave($insert, $changedAttributes);
@@ -475,9 +484,7 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     if ($insert) {
-      // по умолчанию роль сотрудника с базовыми правами
-      $auth = Yii::$app->authManager;
-      $auth->assign($auth->getRole(Access::ROLE_USER), $this->id);
+      $this->assignRoles();
     }
 
     if ($this->scenario == self::SCENARIO_UPDATE_ROLES) {

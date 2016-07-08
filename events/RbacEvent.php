@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace yujin1st\user\events;
+namespace yujin1st\users\events;
 
 use yii\base\Event;
-use yujin1st\user\rbac\AccessInterface;
+use yujin1st\users\rbac\AccessInterface;
 
 /**
  * @property array $classes

@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace yujin1st\user\widgets;
+namespace yujin1st\users\widgets;
 
 use yii\base\Widget;
-use yujin1st\user\models\LoginForm;
+use yujin1st\users\models\LoginForm;
 
 /**
  * Login for widget.

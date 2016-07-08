@@ -13,7 +13,7 @@ use yii\helpers\Html;
 
 /**
  * @var \yii\web\View $this
- * @var \yujin1st\user\models\Profile $profile
+ * @var \yujin1st\users\models\Profile $profile
  */
 
 $this->title = empty($profile->name) ? Html::encode($profile->user->username) : Html::encode($profile->name);

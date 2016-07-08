@@ -4,7 +4,7 @@ $config = [
   'id' => 'yii2-user-test',
   'basePath' => dirname(__DIR__),
   'bootstrap' => [
-    'yujin1st\user\Bootstrap',
+    'yujin1st\users\Bootstrap',
   ],
   'extensions' => require(VENDOR_DIR . '/yiisoft/extensions.php'),
   'aliases' => [
@@ -15,7 +15,7 @@ $config = [
   ],
   'modules' => [
     'user' => [
-      'class' => 'yujin1st\user\Module',
+      'class' => 'yujin1st\users\Module',
       'admins' => ['user'],
     ],
   ],

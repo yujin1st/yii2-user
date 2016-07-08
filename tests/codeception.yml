@@ -1,4 +1,4 @@
-namespace: yujin1st\user\tests
+namespace: yujin1st\users\tests
 actor: Tester
 paths:
     tests: codeception

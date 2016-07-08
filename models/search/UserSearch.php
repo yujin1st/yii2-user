@@ -9,12 +9,12 @@
  * file that was distributed with this source code.
  */
 
-namespace yujin1st\user\models\search;
+namespace yujin1st\users\models\search;
 
 use yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use yujin1st\user\models\User;
+use yujin1st\users\models\User;
 
 /**
  * UserSearch represents the model behind the search form about User.

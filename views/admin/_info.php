@@ -11,11 +11,11 @@
 
 /**
  * @var yii\web\View
- * @var yujin1st\user\models\User
+ * @var yujin1st\users\models\User
  */
 ?>
 
-<?php $this->beginContent('@yujin1st/user/views/admin/update.php', ['user' => $user]) ?>
+<?php $this->beginContent('@yujin1st/users/views/admin/update.php', ['user' => $user]) ?>
 
 <table class="table">
   <tr>

@@ -15,7 +15,7 @@ use yii\helpers\Html;
 use yii\jui\DatePicker;
 use yii\web\View;
 use yii\widgets\Pjax;
-use yujin1st\user\models\search\UserSearch;
+use yujin1st\users\models\search\UserSearch;
 
 /**
  * @var View $this
@@ -44,7 +44,7 @@ $this->params['breadcrumbs'][] = $this->title;
       'attribute' => 'username',
       'format' => 'raw',
       'value' => function ($model) {
-        /** @var \yujin1st\user\models\User $model */
+        /** @var \yujin1st\users\models\User $model */
         return Html::a($model->username, ['update', 'id' => $model->id]);
       },
     ],
@@ -53,7 +53,7 @@ $this->params['breadcrumbs'][] = $this->title;
       'attribute' => 'email',
       'format' => 'raw',
       'value' => function ($model) {
-        /** @var \yujin1st\user\models\User $model */
+        /** @var \yujin1st\users\models\User $model */
         return Html::a($model->email, ['update', 'id' => $model->id]);
       },
     ],

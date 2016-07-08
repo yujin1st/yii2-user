@@ -9,18 +9,18 @@
  * file that was distributed with this source code.
  */
 
-namespace yujin1st\user\controllers;
+namespace yujin1st\users\controllers;
 
 use yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yujin1st\user\models\Profile;
+use yujin1st\users\models\Profile;
 
 /**
  * ProfileController shows users profiles.
  *
- * @property \yujin1st\user\Module $module
+ * @property \yujin1st\users\Module $module
  *
  * @author Dmitry Erofeev <dmeroff@gmail.com>
  */

@@ -14,7 +14,7 @@ use yii\widgets\ActiveForm;
 
 /*
  * @var yii\web\View                    $this
- * @var yujin1st\user\models\ResendForm $model
+ * @var yujin1st\users\models\ResendForm $model
  */
 
 $this->title = Yii::t('user', 'Request new confirmation message');

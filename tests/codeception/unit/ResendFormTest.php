@@ -1,10 +1,10 @@
 <?php
 
-namespace yujin1st\user\tests;
+namespace yujin1st\users\tests;
 
 use tests\codeception\_fixtures\UserFixture;
 use yii\codeception\TestCase;
-use yujin1st\user\models\ResendForm;
+use yujin1st\users\models\ResendForm;
 
 class ResendFormTest extends TestCase
 {

@@ -7,10 +7,10 @@ You can change controller's layout using `controllerMap` module's property:
 ```php
 'modules' => [
     'user' => [
-        'class' => 'yujin1st\user\Module',
+        'class' => 'yujin1st\users\Module',
         'controllerMap' => [
             'admin' => [
-                'class'  => 'yujin1st\user\controllers\AdminController',
+                'class'  => 'yujin1st\users\controllers\AdminController',
                 'layout' => '//admin-layout',
             ],
         ],
@@ -33,14 +33,14 @@ You can use Login widget to achieve this:
 ```php
 <?php
 
-use yujin1st\user\widgets\Login;
+use yujin1st\users\widgets\Login;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /**
  * @var yii\web\View              $this
- * @var yujin1st\user\models\User $user
- * @var yujin1st\user\Module      $module
+ * @var yujin1st\users\models\User $user
+ * @var yujin1st\users\Module      $module
  */
 
 $this->title = Yii::t('user', 'Sign up');

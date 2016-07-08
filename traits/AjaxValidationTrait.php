@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace yujin1st\user\traits;
+namespace yujin1st\users\traits;
 
 use yii;
 use yii\base\Model;

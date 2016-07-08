@@ -12,7 +12,7 @@
 use yii\helpers\Html;
 use yii\widgets\Menu;
 
-/** @var yujin1st\user\models\User $user */
+/** @var yujin1st\users\models\User $user */
 $user = Yii::$app->user->identity;
 $networksVisible = count(Yii::$app->authClientCollection->clients) > 0;
 

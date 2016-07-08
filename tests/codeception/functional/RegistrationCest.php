@@ -1,13 +1,13 @@
 <?php
 
-namespace yujin1st\user\tests;
+namespace yujin1st\users\tests;
 
 use tests\codeception\_pages\LoginPage;
 use tests\codeception\_pages\RegistrationPage;
 use yii\helpers\Html;
-use yujin1st\user\models\Token;
-use yujin1st\user\models\User;
-use yujin1st\user\Module;
+use yujin1st\users\models\Token;
+use yujin1st\users\models\User;
+use yujin1st\users\Module;
 
 class RegistrationCest
 {
@@ -21,7 +21,7 @@ class RegistrationCest
   /**
    * Tests registration with email, username and password without any confirmation.
    *
-   * @param \yujin1st\user\tests\FunctionalTester $I
+   * @param \yujin1st\users\tests\FunctionalTester $I
    */
   public function testRegistration(FunctionalTester $I) {
     \Yii::$container->set(Module::className(), [

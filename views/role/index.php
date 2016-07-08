@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <!--
 <p>
-  <?php if (Yii::$app->user->can(\yujin1st\user\rbac\Access::USER_UPDATE)): ?>
+  <?php if (Yii::$app->user->can(\yujin1st\users\rbac\Access::USER_UPDATE)): ?>
     <? //= Html::a('Новая роль', ['create'], ['class' => 'btn btn-success']) ?>
   <?php endif; ?>
 </p>

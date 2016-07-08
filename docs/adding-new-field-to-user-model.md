@@ -32,7 +32,7 @@ And now you can apply that migration by running `php yii migrate`.
 Override `User` model as described in [guide](overriding-models.md) and add following lines to the overridden model:
 
 ```php
-class User extends \yujin1st\user\models\User
+class User extends \yujin1st\users\models\User
 {
     public function scenarios()
     {
@@ -58,7 +58,7 @@ class User extends \yujin1st\user\models\User
 
 ## Adding field to the admin form
 
-You should override view file `@yujin1st/user/views/admin/_user.php` as described in [special guide](overriding-views.md)
+You should override view file `@yujin1st/users/views/admin/_user.php` as described in [special guide](overriding-views.md)
 with the following content:
 
 ```php
@@ -66,7 +66,7 @@ with the following content:
 
 /**
  * @var yii\widgets\ActiveForm    $form
- * @var yujin1st\user\models\User $user
+ * @var yujin1st\users\models\User $user
  */
 
 ?>
@@ -84,7 +84,7 @@ overriding registration form. Since all the fields of registration form are pass
 a field and appropriate validation rules:
 
 ```php
-class RegistrationForm extends \yujin1st\user\models\RegistrationForm
+class RegistrationForm extends \yujin1st\users\models\RegistrationForm
 {
     /**
      * @var string
@@ -113,7 +113,7 @@ use yii\widgets\ActiveForm;
 /**
  * @var yii\web\View              $this
  * @var yii\widgets\ActiveForm    $form
- * @var yujin1st\user\models\User $user
+ * @var yujin1st\users\models\User $user
  */
 
 $this->title = Yii::t('user', 'Sign up');

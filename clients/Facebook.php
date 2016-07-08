@@ -11,7 +11,7 @@
  * @author Dmitry Erofeev <dmeroff@gmail.com>
  */
 
-namespace yujin1st\user\clients;
+namespace yujin1st\users\clients;
 
 use yii\authclient\clients\Facebook as BaseFacebook;
 

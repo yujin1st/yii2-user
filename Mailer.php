@@ -9,12 +9,12 @@
  * file that was distributed with this source code.
  */
 
-namespace yujin1st\user;
+namespace yujin1st\users;
 
 use yii;
 use yii\base\Component;
-use yujin1st\user\models\Token;
-use yujin1st\user\models\User;
+use yujin1st\users\models\Token;
+use yujin1st\users\models\User;
 
 /**
  * Mailer.
@@ -24,7 +24,7 @@ use yujin1st\user\models\User;
 class Mailer extends Component
 {
   /** @var string */
-  public $viewPath = '@yujin1st/user/views/mail';
+  public $viewPath = '@yujin1st/users/views/mail';
 
   /** @var string|array Default: `Yii::$app->params['adminEmail']` OR `no-reply@example.com` */
   public $sender;
@@ -41,7 +41,7 @@ class Mailer extends Component
   /** @var string */
   protected $recoverySubject;
 
-  /** @var \yujin1st\user\Module */
+  /** @var \yujin1st\users\Module */
   protected $module;
 
   /**

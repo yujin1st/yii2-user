@@ -4,13 +4,13 @@
  * @author Evgeniy Bobrov <yujin1st@gmail.com>
  */
 
-namespace yujin1st\user\models;
+namespace yujin1st\users\models;
 
 use yii;
 use yii\base\Model;
 use yii\helpers\ArrayHelper;
 use yii\rbac\Role;
-use yujin1st\user\rbac\Rbac;
+use yujin1st\users\rbac\Rbac;
 
 /**
  * Role form

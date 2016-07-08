@@ -1,6 +1,6 @@
 <?php
 
-use yujin1st\user\models\Token;
+use yujin1st\users\models\Token;
 
 $time = time();
 

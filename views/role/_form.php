@@ -6,7 +6,7 @@
 
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
-use yujin1st\user\models\RoleForm;
+use yujin1st\users\models\RoleForm;
 
 /* @var $this yii\web\View */
 /* @var $model RoleForm */

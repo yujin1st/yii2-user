@@ -9,11 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace yujin1st\user\events;
+namespace yujin1st\users\events;
 
 use yii\base\Event;
-use yujin1st\user\models\RecoveryForm;
-use yujin1st\user\models\Token;
+use yujin1st\users\models\RecoveryForm;
+use yujin1st\users\models\Token;
 
 /**
  * @property Token $token

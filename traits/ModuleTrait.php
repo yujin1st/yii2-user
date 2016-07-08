@@ -1,15 +1,15 @@
 <?php
 
 
-namespace yujin1st\user\traits;
+namespace yujin1st\users\traits;
 
-use yujin1st\user\Module;
+use yujin1st\users\Module;
 
 /**
  * Trait ModuleTrait
  *
  * @property-read Module $module
- * @package yujin1st\user\traits
+ * @package yujin1st\users\traits
  */
 trait ModuleTrait
 {

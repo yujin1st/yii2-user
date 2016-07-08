@@ -9,18 +9,18 @@
  * file that was distributed with this source code.
  */
 
-namespace yujin1st\user\models;
+namespace yujin1st\users\models;
 
 use yii;
 use yii\base\Model;
 use yii\helpers\ArrayHelper;
-use yujin1st\user\Mailer;
-use yujin1st\user\traits\ModuleTrait;
+use yujin1st\users\Mailer;
+use yujin1st\users\traits\ModuleTrait;
 
 /**
  * Model for collecting data on password recovery.
  *
- * @property \yujin1st\user\Module $module
+ * @property \yujin1st\users\Module $module
  *
  * @author Dmitry Erofeev <dmeroff@gmail.com>
  */

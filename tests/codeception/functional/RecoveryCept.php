@@ -1,12 +1,12 @@
 <?php
 
-/*use yujin1st\user\tests\FunctionalTester;
+/*use yujin1st\users\tests\FunctionalTester;
 use tests\codeception\_pages\RecoveryPage;
 use tests\codeception\_pages\LoginPage;
 use yii\helpers\Html;
 use yii\helpers\Url;
-use yujin1st\user\models\User;
-use yujin1st\user\models\Token;
+use yujin1st\users\models\User;
+use yujin1st\users\models\Token;
 
 $I = new FunctionalTester($scenario);
 $I->wantTo('ensure that password recovery works');

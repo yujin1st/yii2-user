@@ -10,7 +10,7 @@
  */
 
 /**
- * @var yujin1st\user\models\Token $token
+ * @var yujin1st\users\models\Token $token
  */
 ?>
 <?= Yii::t('user', 'Hello') ?>,

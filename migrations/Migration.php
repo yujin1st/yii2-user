@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace yujin1st\user\migrations;
+namespace yujin1st\users\migrations;
 
 use yii;
 

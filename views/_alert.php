@@ -10,7 +10,7 @@
  */
 
 /**
- * @var yujin1st\user\Module $module
+ * @var yujin1st\users\Module $module
  */
 ?>
 

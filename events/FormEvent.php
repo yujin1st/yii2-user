@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace yujin1st\user\events;
+namespace yujin1st\users\events;
 
 use yii\base\Event;
 use yii\base\Model;

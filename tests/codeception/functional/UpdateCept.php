@@ -2,7 +2,7 @@
 
 use tests\codeception\_pages\LoginPage;
 use tests\codeception\_pages\UpdatePage;
-use yujin1st\user\tests\FunctionalTester;
+use yujin1st\users\tests\FunctionalTester;
 
 $I = new FunctionalTester($scenario);
 $I->wantTo('ensure that user update works');

@@ -3,9 +3,9 @@
 use tests\codeception\_pages\LoginPage;
 use tests\codeception\_pages\SettingsPage;
 use yii\helpers\Html;
-use yujin1st\user\models\Token;
-use yujin1st\user\models\User;
-use yujin1st\user\tests\FunctionalTester;
+use yujin1st\users\models\Token;
+use yujin1st\users\models\User;
+use yujin1st\users\tests\FunctionalTester;
 
 $I = new FunctionalTester($scenario);
 $I->wantTo('ensure that account settings page work');

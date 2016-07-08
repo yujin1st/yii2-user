@@ -1,14 +1,14 @@
 <?php
 
-namespace yujin1st\user\tests;
+namespace yujin1st\users\tests;
 
 use Codeception\Specify;
 use tests\codeception\_fixtures\UserFixture;
 use yii\codeception\TestCase;
-use yujin1st\user\helpers\Password;
-use yujin1st\user\models\RegistrationForm;
-use yujin1st\user\models\Token;
-use yujin1st\user\models\User;
+use yujin1st\users\helpers\Password;
+use yujin1st\users\models\RegistrationForm;
+use yujin1st\users\models\Token;
+use yujin1st\users\models\User;
 
 class RegistrationFormTest extends TestCase
 {

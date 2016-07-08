@@ -21,7 +21,7 @@ public property named **captcha** and validation rules.
 
     namespace app\models;
 
-    class RegistrationForm extends \yujin1st\user\models\RegistrationForm
+    class RegistrationForm extends \yujin1st\users\models\RegistrationForm
     {
         /**
          * @var string

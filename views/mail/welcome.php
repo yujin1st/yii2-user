@@ -12,9 +12,9 @@
 use yii\helpers\Html;
 
 /**
- * @var yujin1st\user\Module $module
- * @var yujin1st\user\models\User $user
- * @var yujin1st\user\models\Token $token
+ * @var yujin1st\users\Module $module
+ * @var yujin1st\users\models\User $user
+ * @var yujin1st\users\models\Token $token
  * @var bool $showPassword
  */
 

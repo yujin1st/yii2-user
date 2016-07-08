@@ -9,18 +9,18 @@
  * file that was distributed with this source code.
  */
 
-namespace yujin1st\user\commands;
+namespace yujin1st\users\commands;
 
 use yii;
 use yii\console\Controller;
 use yii\helpers\Console;
-use yujin1st\user\models\User;
-use yujin1st\user\rbac\Rbac;
+use yujin1st\users\models\User;
+use yujin1st\users\rbac\Rbac;
 
 /**
  * Confirms a user.
  *
- * @property \yujin1st\user\Module $module
+ * @property \yujin1st\users\Module $module
  *
  * @author Dmitry Erofeev <dmeroff@gmail.com>
  */

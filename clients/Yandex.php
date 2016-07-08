@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace yujin1st\user\clients;
+namespace yujin1st\users\clients;
 
 use yii;
 use yii\authclient\clients\YandexOAuth as BaseYandex;

@@ -1,15 +1,15 @@
 <?php
 
-namespace yujin1st\user\tests;
+namespace yujin1st\users\tests;
 
 use AspectMock\Test as test;
 use Codeception\Specify;
 use yii;
 use yii\base\Security;
 use yii\codeception\TestCase;
-use yujin1st\user\Finder;
-use yujin1st\user\models\LoginForm;
-use yujin1st\user\models\User;
+use yujin1st\users\Finder;
+use yujin1st\users\models\LoginForm;
+use yujin1st\users\models\User;
 
 /**
  * Tests for a login form.

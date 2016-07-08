@@ -2,7 +2,7 @@
 
 use tests\codeception\_pages\CreatePage;
 use tests\codeception\_pages\LoginPage;
-use yujin1st\user\tests\FunctionalTester;
+use yujin1st\users\tests\FunctionalTester;
 
 $I = new FunctionalTester($scenario);
 $I->wantTo('ensure that user creation works');

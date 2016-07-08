@@ -9,13 +9,13 @@
  * file that was distributed with this source code.
  */
 
-namespace yujin1st\user\models;
+namespace yujin1st\users\models;
 
 use yii;
 use yii\db\ActiveRecord;
 use yii\helpers\Url;
-use yujin1st\user\models\query\TokenQuery;
-use yujin1st\user\traits\ModuleTrait;
+use yujin1st\users\models\query\TokenQuery;
+use yujin1st\users\traits\ModuleTrait;
 
 /**
  * Token Active Record model.

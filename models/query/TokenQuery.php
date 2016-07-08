@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace yujin1st\user\models\query;
+namespace yujin1st\users\models\query;
 
 use yii\db\ActiveQuery;
-use yujin1st\user\models\Token;
+use yujin1st\users\models\Token;
 
 /**
  * @author Evgeniy Bobrov <yujin1st@gmail.com>

@@ -9,9 +9,9 @@ Let's start with overriding the registration form model:
 ```php
 namespace app\models;
 
-use yujin1st\user\models\Profile;
-use yujin1st\user\models\RegistrationForm as BaseRegistrationForm;
-use yujin1st\user\models\User;
+use yujin1st\users\models\Profile;
+use yujin1st\users\models\RegistrationForm as BaseRegistrationForm;
+use yujin1st\users\models\User;
 
 class RegistrationForm extends BaseRegistrationForm
 {
@@ -75,7 +75,7 @@ use yii\widgets\ActiveForm;
 /**
  * @var yii\web\View              $this
  * @var yii\widgets\ActiveForm    $form
- * @var yujin1st\user\models\User $user
+ * @var yujin1st\users\models\User $user
  */
 
 $this->title = Yii::t('user', 'Sign up');

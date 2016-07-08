@@ -11,7 +11,7 @@
 
 /**
  * @var yii\web\View $this
- * @var yujin1st\user\Module $module
+ * @var yujin1st\users\Module $module
  */
 
 $this->title = $title;

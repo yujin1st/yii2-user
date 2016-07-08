@@ -11,7 +11,7 @@ To start using user management interface you have to add your username to admini
 'modules' => [
     ...
     'user' => [
-        'class'  => 'yujin1st\user\Module',
+        'class'  => 'yujin1st\users\Module',
         'admins' => ['your-username-goes-here']
     ],
     ...
@@ -50,7 +50,7 @@ Sometimes you will need to have different layouts for frontend and backend pages
 'modules' => [
     ...
     'user' => [
-        'class' => 'yujin1st\user\Module',
+        'class' => 'yujin1st\users\Module',
         'controllerMap' => [
             'admin' => [
                 'class'  => 'app\controllers\user\AdminController',

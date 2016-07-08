@@ -51,7 +51,7 @@ passwords.
 
 ---
 
-#### emailChangeStrategy (Type: `integer`, Default value: `\yujin1st\user\Module::STRATEGY_DEFAULT`)
+#### emailChangeStrategy (Type: `integer`, Default value: `\yujin1st\users\Module::STRATEGY_DEFAULT`)
 
 When user tries change his password, there are three ways how this change will
 happen:
@@ -137,7 +137,7 @@ The configuration should be applied in your main configuration file:
 'modules' => [
     ...
     'user' => [
-        'class' => 'yujin1st\user\Module',
+        'class' => 'yujin1st\users\Module',
         'enableUnconfirmedLogin' => true,
         'confirmWithin' => 21600,
         'cost' => 12,

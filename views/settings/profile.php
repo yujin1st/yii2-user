@@ -14,7 +14,7 @@ use yii\helpers\Html;
 /**
  * @var yii\web\View $this
  * @var yii\widgets\ActiveForm $form
- * @var yujin1st\user\models\Profile $profile
+ * @var yujin1st\users\models\Profile $profile
  */
 
 $this->title = Yii::t('user', 'Profile settings');
@@ -53,7 +53,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <?= $form->field($model, 'location') ?>
 
-        <?= $form->field($model, 'timezone')->dropDownList(\yii\helpers\ArrayHelper::map(\yujin1st\user\helpers\Timezone::getAll(), 'timezone', 'name')); ?>
+        <?= $form->field($model, 'timezone')->dropDownList(\yii\helpers\ArrayHelper::map(\yujin1st\users\helpers\Timezone::getAll(), 'timezone', 'name')); ?>
 
         <?= $form->field($model, 'gravatar_email')->hint(\yii\helpers\Html::a(Yii::t('user', 'Change your avatar at Gravatar.com'), 'http://gravatar.com')) ?>
 

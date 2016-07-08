@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace yujin1st\user\clients;
+namespace yujin1st\users\clients;
 
 use yii\authclient\clients\Twitter as BaseTwitter;
 use yii\helpers\ArrayHelper;

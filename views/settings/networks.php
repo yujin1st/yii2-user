@@ -10,7 +10,7 @@
  */
 
 use yii\helpers\Html;
-use yujin1st\user\widgets\Connect;
+use yujin1st\users\widgets\Connect;
 
 /*
  * @var yii\web\View $this

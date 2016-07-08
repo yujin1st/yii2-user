@@ -9,15 +9,15 @@
  * file that was distributed with this source code.
  */
 
-namespace yujin1st\user;
+namespace yujin1st\users;
 
 use yii;
 use yii\authclient\Collection;
 use yii\base\Module as BaseModule;
 use yii\console\Application as ConsoleApplication;
 use yii\i18n\PhpMessageSource;
-use yujin1st\user\events\RbacEvent;
-use yujin1st\user\rbac\Access;
+use yujin1st\users\events\RbacEvent;
+use yujin1st\users\rbac\Access;
 
 /**
  * This is the main module class for the Yii2-user.
@@ -109,16 +109,16 @@ class Module extends BaseModule
 
   /** @var array Model's map */
   private $_modelMap = [
-    'User' => 'yujin1st\user\models\User',
-    'Account' => 'yujin1st\user\models\Account',
-    'Profile' => 'yujin1st\user\models\Profile',
-    'Token' => 'yujin1st\user\models\Token',
-    'RegistrationForm' => 'yujin1st\user\models\RegistrationForm',
-    'ResendForm' => 'yujin1st\user\models\ResendForm',
-    'LoginForm' => 'yujin1st\user\models\LoginForm',
-    'SettingsForm' => 'yujin1st\user\models\SettingsForm',
-    'RecoveryForm' => 'yujin1st\user\models\RecoveryForm',
-    'UserSearch' => 'yujin1st\user\models\search\UserSearch',
+    'User' => 'yujin1st\users\models\User',
+    'Account' => 'yujin1st\users\models\Account',
+    'Profile' => 'yujin1st\users\models\Profile',
+    'Token' => 'yujin1st\users\models\Token',
+    'RegistrationForm' => 'yujin1st\users\models\RegistrationForm',
+    'ResendForm' => 'yujin1st\users\models\ResendForm',
+    'LoginForm' => 'yujin1st\users\models\LoginForm',
+    'SettingsForm' => 'yujin1st\users\models\SettingsForm',
+    'RecoveryForm' => 'yujin1st\users\models\RecoveryForm',
+    'UserSearch' => 'yujin1st\users\models\search\UserSearch',
   ];
 
   /** @inheritdoc */
@@ -136,8 +136,8 @@ class Module extends BaseModule
       'rules' => $this->urlRules,
     ];
 
-    if ($this->urlPrefix != 'user') {
-      $configUrlRule['routePrefix'] = 'user';
+    if ($this->urlPrefix != 'users') {
+      $configUrlRule['routePrefix'] = 'users';
     }
 
     $configUrlRule['class'] = 'yii\web\GroupUrlRule';
@@ -153,17 +153,17 @@ class Module extends BaseModule
     /** @var \yii\db\ActiveRecord $modelName */
     $this->_modelMap = array_merge($this->_modelMap, $this->modelMap);
     foreach ($this->_modelMap as $name => $definition) {
-      $class = "yujin1st\\user\\models\\" . $name;
+      $class = "yujin1st\\users\\models\\" . $name;
       Yii::$container->set($class, $definition);
       $modelName = is_array($definition) ? $definition['class'] : $definition;
       $this->modelMap[$name] = $modelName;
     }
 
     if ($app instanceof ConsoleApplication) {
-      $this->controllerNamespace = 'yujin1st\user\commands';
+      $this->controllerNamespace = 'yujin1st\users\commands';
     } else {
-      $this->controllerNamespace = 'yujin1st\user\controllers';
-      $this->viewPath = '@yujin1st/user/views';
+      $this->controllerNamespace = 'yujin1st\users\controllers';
+      $this->viewPath = '@yujin1st/users/views';
 
       Yii::$container->set('yii\web\User', [
         'enableAutoLogin' => true,
@@ -194,7 +194,7 @@ class Module extends BaseModule
     });
 
 
-    Yii::$container->set('yujin1st\user\Mailer', $this->mailer);
+    Yii::$container->set('yujin1st\users\Mailer', $this->mailer);
   }
 
 }

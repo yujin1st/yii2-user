@@ -1,17 +1,17 @@
 <?php
 
-namespace yujin1st\user\tests;
+namespace yujin1st\users\tests;
 
 use AspectMock\Test as test;
 use Codeception\Specify;
 use yii;
 use yii\codeception\TestCase;
 use yii\db\ActiveQuery;
-use yujin1st\user\Finder;
-use yujin1st\user\Mailer;
-use yujin1st\user\models\RecoveryForm;
-use yujin1st\user\models\Token;
-use yujin1st\user\models\User;
+use yujin1st\users\Finder;
+use yujin1st\users\Mailer;
+use yujin1st\users\models\RecoveryForm;
+use yujin1st\users\models\Token;
+use yujin1st\users\models\User;
 
 /**
  * Tests for a recovery form.

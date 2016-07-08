@@ -9,12 +9,12 @@
  * file that was distributed with this source code.
  */
 
-namespace yujin1st\user\models;
+namespace yujin1st\users\models;
 
 use yii;
 use yii\base\Model;
-use yujin1st\user\helpers\Password;
-use yujin1st\user\traits\ModuleTrait;
+use yujin1st\users\helpers\Password;
+use yujin1st\users\traits\ModuleTrait;
 
 /**
  * LoginForm get user's login and password, validates them and logs the user in. If user has been blocked, it adds
@@ -35,7 +35,7 @@ class LoginForm extends Model
   /** @var string Whether to remember the user */
   public $rememberMe = false;
 
-  /** @var \yujin1st\user\models\User */
+  /** @var \yujin1st\users\models\User */
   protected $user;
 
 

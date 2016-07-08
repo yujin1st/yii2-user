@@ -10,7 +10,7 @@
  */
 
 /**
- * @var yujin1st\user\models\User
+ * @var yujin1st\users\models\User
  */
 ?>
 <?= Yii::t('user', 'Hello') ?>,

@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace yujin1st\user\controllers;
+namespace yujin1st\users\controllers;
 
 use yii;
 use yii\authclient\AuthAction;
@@ -19,12 +19,12 @@ use yii\filters\VerbFilter;
 use yii\helpers\Url;
 use yii\web\Controller;
 use yii\web\Response;
-use yujin1st\user\models\Account;
-use yujin1st\user\models\LoginForm;
-use yujin1st\user\models\User;
-use yujin1st\user\Module;
-use yujin1st\user\traits\AjaxValidationTrait;
-use yujin1st\user\traits\EventTrait;
+use yujin1st\users\models\Account;
+use yujin1st\users\models\LoginForm;
+use yujin1st\users\models\User;
+use yujin1st\users\Module;
+use yujin1st\users\traits\AjaxValidationTrait;
+use yujin1st\users\traits\EventTrait;
 
 /**
  * Controller that manages user authentication process.
@@ -40,49 +40,49 @@ class SecurityController extends Controller
 
   /**
    * Event is triggered before logging user in.
-   * Triggered with \yujin1st\user\events\FormEvent.
+   * Triggered with \yujin1st\users\events\FormEvent.
    */
   const EVENT_BEFORE_LOGIN = 'beforeLogin';
 
   /**
    * Event is triggered after logging user in.
-   * Triggered with \yujin1st\user\events\FormEvent.
+   * Triggered with \yujin1st\users\events\FormEvent.
    */
   const EVENT_AFTER_LOGIN = 'afterLogin';
 
   /**
    * Event is triggered before logging user out.
-   * Triggered with \yujin1st\user\events\UserEvent.
+   * Triggered with \yujin1st\users\events\UserEvent.
    */
   const EVENT_BEFORE_LOGOUT = 'beforeLogout';
 
   /**
    * Event is triggered after logging user out.
-   * Triggered with \yujin1st\user\events\UserEvent.
+   * Triggered with \yujin1st\users\events\UserEvent.
    */
   const EVENT_AFTER_LOGOUT = 'afterLogout';
 
   /**
    * Event is triggered before authenticating user via social network.
-   * Triggered with \yujin1st\user\events\AuthEvent.
+   * Triggered with \yujin1st\users\events\AuthEvent.
    */
   const EVENT_BEFORE_AUTHENTICATE = 'beforeAuthenticate';
 
   /**
    * Event is triggered after authenticating user via social network.
-   * Triggered with \yujin1st\user\events\AuthEvent.
+   * Triggered with \yujin1st\users\events\AuthEvent.
    */
   const EVENT_AFTER_AUTHENTICATE = 'afterAuthenticate';
 
   /**
    * Event is triggered before connecting social network account to user.
-   * Triggered with \yujin1st\user\events\AuthEvent.
+   * Triggered with \yujin1st\users\events\AuthEvent.
    */
   const EVENT_BEFORE_CONNECT = 'beforeConnect';
 
   /**
    * Event is triggered before connecting social network account to user.
-   * Triggered with \yujin1st\user\events\AuthEvent.
+   * Triggered with \yujin1st\users\events\AuthEvent.
    */
   const EVENT_AFTER_CONNECT = 'afterConnect';
 

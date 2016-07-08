@@ -9,21 +9,21 @@
  * file that was distributed with this source code.
  */
 
-namespace yujin1st\user\controllers;
+namespace yujin1st\users\controllers;
 
 use yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yujin1st\user\models\RecoveryForm;
-use yujin1st\user\models\Token;
-use yujin1st\user\traits\AjaxValidationTrait;
-use yujin1st\user\traits\EventTrait;
+use yujin1st\users\models\RecoveryForm;
+use yujin1st\users\models\Token;
+use yujin1st\users\traits\AjaxValidationTrait;
+use yujin1st\users\traits\EventTrait;
 
 /**
  * RecoveryController manages password recovery process.
  *
- * @property \yujin1st\user\Module $module
+ * @property \yujin1st\users\Module $module
  *
  * @author Dmitry Erofeev <dmeroff@gmail.com>
  */
@@ -34,37 +34,37 @@ class RecoveryController extends Controller
 
   /**
    * Event is triggered before requesting password reset.
-   * Triggered with \yujin1st\user\events\FormEvent.
+   * Triggered with \yujin1st\users\events\FormEvent.
    */
   const EVENT_BEFORE_REQUEST = 'beforeRequest';
 
   /**
    * Event is triggered after requesting password reset.
-   * Triggered with \yujin1st\user\events\FormEvent.
+   * Triggered with \yujin1st\users\events\FormEvent.
    */
   const EVENT_AFTER_REQUEST = 'afterRequest';
 
   /**
    * Event is triggered before validating recovery token.
-   * Triggered with \yujin1st\user\events\ResetPasswordEvent. May not have $form property set.
+   * Triggered with \yujin1st\users\events\ResetPasswordEvent. May not have $form property set.
    */
   const EVENT_BEFORE_TOKEN_VALIDATE = 'beforeTokenValidate';
 
   /**
    * Event is triggered after validating recovery token.
-   * Triggered with \yujin1st\user\events\ResetPasswordEvent. May not have $form property set.
+   * Triggered with \yujin1st\users\events\ResetPasswordEvent. May not have $form property set.
    */
   const EVENT_AFTER_TOKEN_VALIDATE = 'afterTokenValidate';
 
   /**
    * Event is triggered before resetting password.
-   * Triggered with \yujin1st\user\events\ResetPasswordEvent.
+   * Triggered with \yujin1st\users\events\ResetPasswordEvent.
    */
   const EVENT_BEFORE_RESET = 'beforeReset';
 
   /**
    * Event is triggered after resetting password.
-   * Triggered with \yujin1st\user\events\ResetPasswordEvent.
+   * Triggered with \yujin1st\users\events\ResetPasswordEvent.
    */
   const EVENT_AFTER_RESET = 'afterReset';
 

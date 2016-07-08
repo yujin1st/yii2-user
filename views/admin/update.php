@@ -11,7 +11,7 @@
 
 use yii\bootstrap\Nav;
 use yii\web\View;
-use yujin1st\user\models\User;
+use yujin1st\users\models\User;
 
 /**
  * @var View $this

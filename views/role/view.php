@@ -9,7 +9,7 @@ use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
 /* @var $role \yii\rbac\Role */
-/* @var $model yujin1st\user\models\RoleForm */
+/* @var $model yujin1st\users\models\RoleForm */
 
 $this->title = $role->description ?: $role->name;
 $this->params['breadcrumbs'][] = ['label' => 'Роли', 'url' => ['index']];

@@ -9,14 +9,14 @@
  * file that was distributed with this source code.
  */
 
-namespace yujin1st\user\models;
+namespace yujin1st\users\models;
 
 use yii;
 use yii\base\Model;
-use yujin1st\user\helpers\Password;
-use yujin1st\user\Mailer;
-use yujin1st\user\Module;
-use yujin1st\user\traits\ModuleTrait;
+use yujin1st\users\helpers\Password;
+use yujin1st\users\Mailer;
+use yujin1st\users\Module;
+use yujin1st\users\traits\ModuleTrait;
 
 /**
  * SettingsForm gets user's username, email and password and changes them.

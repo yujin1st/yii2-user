@@ -9,12 +9,12 @@
  * file that was distributed with this source code.
  */
 
-namespace yujin1st\user\models;
+namespace yujin1st\users\models;
 
 use yii;
 use yii\base\Model;
-use yujin1st\user\Mailer;
-use yujin1st\user\traits\ModuleTrait;
+use yujin1st\users\Mailer;
+use yujin1st\users\traits\ModuleTrait;
 
 /**
  * ResendForm gets user email address and validates if user has already confirmed his account. If so, it shows error

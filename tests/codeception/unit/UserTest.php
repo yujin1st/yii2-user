@@ -1,12 +1,12 @@
 <?php
 
-namespace yujin1st\user\tests;
+namespace yujin1st\users\tests;
 
 use Codeception\Specify;
 use tests\codeception\_fixtures\UserFixture;
 use yii;
 use yii\codeception\TestCase;
-use yujin1st\user\models\User;
+use yujin1st\users\models\User;
 
 /**
  * Test suite for User active record class.

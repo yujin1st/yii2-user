@@ -9,9 +9,8 @@
  * file that was distributed with this source code.
  */
 
-namespace yujin1st\user;
+namespace yujin1st\users;
 
-use yii;
 use yii\base\BootstrapInterface;
 
 /**

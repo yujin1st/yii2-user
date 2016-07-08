@@ -10,7 +10,7 @@
  */
 
 use yii\db\Schema;
-use yujin1st\user\migrations\Migration;
+use yujin1st\users\migrations\Migration;
 
 /**
  * @author Dmitry Erofeev <dmeroff@gmail.com

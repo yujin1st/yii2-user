@@ -15,7 +15,7 @@ use yii\widgets\ActiveForm;
 /**
  * @var $this  yii\web\View
  * @var $form  yii\widgets\ActiveForm
- * @var $model yujin1st\user\models\SettingsForm
+ * @var $model yujin1st\users\models\SettingsForm
  */
 
 $this->title = Yii::t('user', 'Account settings');

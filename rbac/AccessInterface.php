@@ -1,8 +1,6 @@
 <?php
 
-namespace yujin1st\user\rbac;
-
-use yii;
+namespace yujin1st\users\rbac;
 
 /**
  * Base interface for class with roles and rules descriptions 

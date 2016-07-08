@@ -1,11 +1,11 @@
 <?php
 
-namespace yujin1st\user\rbac;
+namespace yujin1st\users\rbac;
 
 use yii;
-use yujin1st\user\events\RbacEvent;
-use yujin1st\user\models\User;
-use yujin1st\user\Module;
+use yujin1st\users\events\RbacEvent;
+use yujin1st\users\models\User;
+use yujin1st\users\Module;
 
 /**
  *

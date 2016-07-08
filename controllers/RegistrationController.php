@@ -9,24 +9,24 @@
  * file that was distributed with this source code.
  */
 
-namespace yujin1st\user\controllers;
+namespace yujin1st\users\controllers;
 
 use yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yujin1st\user\models\Account;
-use yujin1st\user\models\RegistrationForm;
-use yujin1st\user\models\ResendForm;
-use yujin1st\user\models\User;
-use yujin1st\user\traits\AjaxValidationTrait;
-use yujin1st\user\traits\EventTrait;
+use yujin1st\users\models\Account;
+use yujin1st\users\models\RegistrationForm;
+use yujin1st\users\models\ResendForm;
+use yujin1st\users\models\User;
+use yujin1st\users\traits\AjaxValidationTrait;
+use yujin1st\users\traits\EventTrait;
 
 /**
  * RegistrationController is responsible for all registration process, which includes registration of a new account,
  * resending confirmation tokens, email confirmation and registration via social networks.
  *
- * @property \yujin1st\user\Module $module
+ * @property \yujin1st\users\Module $module
  *
  * @author Dmitry Erofeev <dmeroff@gmail.com>
  */
@@ -37,49 +37,49 @@ class RegistrationController extends Controller
 
   /**
    * Event is triggered after creating RegistrationForm class.
-   * Triggered with \yujin1st\user\events\FormEvent.
+   * Triggered with \yujin1st\users\events\FormEvent.
    */
   const EVENT_BEFORE_REGISTER = 'beforeRegister';
 
   /**
    * Event is triggered after successful registration.
-   * Triggered with \yujin1st\user\events\FormEvent.
+   * Triggered with \yujin1st\users\events\FormEvent.
    */
   const EVENT_AFTER_REGISTER = 'afterRegister';
 
   /**
    * Event is triggered before connecting user to social account.
-   * Triggered with \yujin1st\user\events\UserEvent.
+   * Triggered with \yujin1st\users\events\UserEvent.
    */
   const EVENT_BEFORE_CONNECT = 'beforeConnect';
 
   /**
    * Event is triggered after connecting user to social account.
-   * Triggered with \yujin1st\user\events\UserEvent.
+   * Triggered with \yujin1st\users\events\UserEvent.
    */
   const EVENT_AFTER_CONNECT = 'afterConnect';
 
   /**
    * Event is triggered before confirming user.
-   * Triggered with \yujin1st\user\events\UserEvent.
+   * Triggered with \yujin1st\users\events\UserEvent.
    */
   const EVENT_BEFORE_CONFIRM = 'beforeConfirm';
 
   /**
    * Event is triggered before confirming user.
-   * Triggered with \yujin1st\user\events\UserEvent.
+   * Triggered with \yujin1st\users\events\UserEvent.
    */
   const EVENT_AFTER_CONFIRM = 'afterConfirm';
 
   /**
    * Event is triggered after creating ResendForm class.
-   * Triggered with \yujin1st\user\events\FormEvent.
+   * Triggered with \yujin1st\users\events\FormEvent.
    */
   const EVENT_BEFORE_RESEND = 'beforeResend';
 
   /**
    * Event is triggered after successful resending of confirmation email.
-   * Triggered with \yujin1st\user\events\FormEvent.
+   * Triggered with \yujin1st\users\events\FormEvent.
    */
   const EVENT_AFTER_RESEND = 'afterResend';
 

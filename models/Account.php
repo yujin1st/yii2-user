@@ -9,16 +9,16 @@
  * file that was distributed with this source code.
  */
 
-namespace yujin1st\user\models;
+namespace yujin1st\users\models;
 
 use yii;
 use yii\authclient\ClientInterface as BaseClientInterface;
 use yii\db\ActiveRecord;
 use yii\helpers\Json;
 use yii\helpers\Url;
-use yujin1st\user\clients\ClientInterface;
-use yujin1st\user\models\query\AccountQuery;
-use yujin1st\user\traits\ModuleTrait;
+use yujin1st\users\clients\ClientInterface;
+use yujin1st\users\models\query\AccountQuery;
+use yujin1st\users\traits\ModuleTrait;
 
 /**
  * @property integer $id          Id

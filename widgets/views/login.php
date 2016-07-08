@@ -16,7 +16,7 @@ use yii\widgets\ActiveForm;
 /**
  * @var yii\web\View $this
  * @var yii\widgets\ActiveForm $form
- * @var yujin1st\user\models\LoginForm $model
+ * @var yujin1st\users\models\LoginForm $model
  * @var string $action
  */
 

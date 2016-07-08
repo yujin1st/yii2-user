@@ -1,7 +1,7 @@
 <?php
 
 use tests\codeception\_pages\ResendPage;
-use yujin1st\user\tests\FunctionalTester;
+use yujin1st\users\tests\FunctionalTester;
 
 $I = new FunctionalTester($scenario);
 $I->wantTo('ensure that resending of confirmation tokens works');

@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace yujin1st\user\helpers;
+namespace yujin1st\users\helpers;
 
 use yii\helpers\ArrayHelper;
 

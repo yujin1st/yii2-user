@@ -1,6 +1,6 @@
 <?php
 
-namespace yujin1st\user\rbac;
+namespace yujin1st\users\rbac;
 
 use yii;
 

@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace yujin1st\user\models;
+namespace yujin1st\users\models;
 
 use yii;
 use yii\base\NotSupportedException;
@@ -19,12 +19,12 @@ use yii\db\Query;
 use yii\helpers\ArrayHelper;
 use yii\web\Application as WebApplication;
 use yii\web\IdentityInterface;
-use yujin1st\user\helpers\Password;
-use yujin1st\user\Mailer;
-use yujin1st\user\models\query\UserQuery;
-use yujin1st\user\Module;
-use yujin1st\user\rbac\Access;
-use yujin1st\user\traits\ModuleTrait;
+use yujin1st\users\helpers\Password;
+use yujin1st\users\Mailer;
+use yujin1st\users\models\query\UserQuery;
+use yujin1st\users\Module;
+use yujin1st\users\rbac\Access;
+use yujin1st\users\traits\ModuleTrait;
 
 /**
  * User ActiveRecord model.

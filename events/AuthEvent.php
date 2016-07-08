@@ -9,11 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace yujin1st\user\events;
+namespace yujin1st\users\events;
 
 use yii\authclient\ClientInterface;
 use yii\base\Event;
-use yujin1st\user\models\Account;
+use yujin1st\users\models\Account;
 
 /**
  * @property Account $account

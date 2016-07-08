@@ -12,14 +12,14 @@
 
 /**
  * @var yii\web\View $this
- * @var yujin1st\user\models\User $user
+ * @var yujin1st\users\models\User $user
  */
 use yii\bootstrap\ActiveForm;
 use yii\bootstrap\Html;
 
 ?>
 
-<?php $this->beginContent('@yujin1st/user/views/admin/update.php', ['user' => $user]) ?>
+<?php $this->beginContent('@yujin1st/users/views/admin/update.php', ['user' => $user]) ?>
 
 <?= yii\bootstrap\Alert::widget([
   'options' => [

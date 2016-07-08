@@ -9,11 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace yujin1st\user\models\query;
+namespace yujin1st\users\models\query;
 
 use yii\authclient\ClientInterface;
 use yii\db\ActiveQuery;
-use yujin1st\user\models\Account;
+use yujin1st\users\models\Account;
 
 /**
  * @author Dmitry Erofeev <dmeroff@gmail.com>

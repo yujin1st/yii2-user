@@ -1,6 +1,6 @@
 <?php
 
-namespace yujin1st\user\controllers;
+namespace yujin1st\users\controllers;
 
 use yii;
 use yii\data\ArrayDataProvider;
@@ -8,13 +8,13 @@ use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yujin1st\user\models\RoleForm;
-use yujin1st\user\rbac\Access;
+use yujin1st\users\models\RoleForm;
+use yujin1st\users\rbac\Access;
 
 /**
  * Role management
  *
- * @package yujin1st\user\controllers
+ * @package yujin1st\users\controllers
  */
 class RoleController extends Controller
 {

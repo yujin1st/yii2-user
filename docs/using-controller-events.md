@@ -12,11 +12,11 @@ message on a blank page:
 
 ```php
 'user' => [
-    'class' => \yujin1st\user\Module::className(),
+    'class' => \yujin1st\users\Module::className(),
     'controllerMap' => [
         'registration' => [
-            'class' => \yujin1st\user\controllers\RegistrationController::className(),
-            'on ' . \yujin1st\user\controllers\RegistrationController::EVENT_AFTER_REGISTER => function ($e) {
+            'class' => \yujin1st\users\controllers\RegistrationController::className(),
+            'on ' . \yujin1st\users\controllers\RegistrationController::EVENT_AFTER_REGISTER => function ($e) {
                 Yii::$app->response->redirect(array('/user/security/login'))->send();
                 Yii::$app->end();
             }

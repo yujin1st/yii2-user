@@ -14,12 +14,12 @@ use yii\helpers\Html;
 
 /*
  * @var yii\web\View $this
- * @var yujin1st\user\models\User $user
+ * @var yujin1st\users\models\User $user
  */
 
 ?>
 
-<?php $this->beginContent('@yujin1st/user/views/admin/update.php', ['user' => $user]) ?>
+<?php $this->beginContent('@yujin1st/users/views/admin/update.php', ['user' => $user]) ?>
 
 <?php $form = ActiveForm::begin([
   'layout' => 'horizontal',

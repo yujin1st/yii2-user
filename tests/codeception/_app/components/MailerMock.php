@@ -3,7 +3,7 @@
 namespace app\components;
 
 use tests\codeception\_support\MailHelper;
-use yujin1st\user\Mailer;
+use yujin1st\users\Mailer;
 
 class MailerMock extends Mailer
 {

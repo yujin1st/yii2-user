@@ -9,11 +9,11 @@
  * file that was distributed with this source code.
  */
 
-namespace yujin1st\user\models;
+namespace yujin1st\users\models;
 
 use yii\db\ActiveRecord;
-use yujin1st\user\models\query\ProfileQuery;
-use yujin1st\user\traits\ModuleTrait;
+use yujin1st\users\models\query\ProfileQuery;
+use yujin1st\users\traits\ModuleTrait;
 
 /**
  * This is the model class for table "profile".
@@ -34,7 +34,7 @@ use yujin1st\user\traits\ModuleTrait;
 class Profile extends ActiveRecord
 {
   use ModuleTrait;
-  /** @var \yujin1st\user\Module */
+  /** @var \yujin1st\users\Module */
   protected $module;
 
   /** @inheritdoc */

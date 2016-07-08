@@ -41,7 +41,7 @@ Here is the list of clients supported by the module:
 
 ```php
 'facebook' => [
-    'class'        => 'yujin1st\user\clients\Facebook',
+    'class'        => 'yujin1st\users\clients\Facebook',
     'clientId'     => 'APP_ID',
     'clientSecret' => 'APP_SECRET',
 ],
@@ -55,7 +55,7 @@ Here is the list of clients supported by the module:
 
 ```php
 'twitter' => [
-    'class'          => 'yujin1st\user\clients\Twitter',
+    'class'          => 'yujin1st\users\clients\Twitter',
     'consumerKey'    => 'CONSUMER_KEY',
     'consumerSecret' => 'CONSUMER_SECRET',
 ],
@@ -71,7 +71,7 @@ Here is the list of clients supported by the module:
 
 ```php
 'google' => [
-    'class'        => 'yujin1st\user\clients\Google',
+    'class'        => 'yujin1st\users\clients\Google',
     'clientId'     => 'clientId',
     'clientSecret' => 'CLIENT_SECRET',
 ],
@@ -83,7 +83,7 @@ Here is the list of clients supported by the module:
 
 ```php
 'github' => [
-    'class'        => 'yujin1st\user\clients\GitHub',
+    'class'        => 'yujin1st\users\clients\GitHub',
     'clientId'     => 'clientId',
     'clientSecret' => 'CLIENT_SECRET',
 ],
@@ -95,7 +95,7 @@ Here is the list of clients supported by the module:
 
 ```php
 'vkontakte' => [
-    'class'        => 'yujin1st\user\clients\VKontakte',
+    'class'        => 'yujin1st\users\clients\VKontakte',
     'clientId'     => 'clientId',
     'clientSecret' => 'CLIENT_SECRET',
 ]
@@ -109,7 +109,7 @@ Here is the list of clients supported by the module:
 
 ```php
 'yandex' => [
-    'class'        => 'yujin1st\user\clients\Yandex',
+    'class'        => 'yujin1st\users\clients\Yandex',
     'clientId'     => 'clientId',
     'clientSecret' => 'CLIENT_SECRET'
 ],
@@ -124,17 +124,17 @@ The following config allows to log in using 3 networks (Twitter, Facebook and Go
     'class' => yii\authclient\Collection::className(),
     'clients' => [
         'facebook' => [
-            'class'        => 'yujin1st\user\clients\Facebook',
+            'class'        => 'yujin1st\users\clients\Facebook',
             'clientId'     => 'clientId',
             'clientSecret' => 'CLIENT_SECRET',
         ],
         'twitter' => [
-            'class'          => 'yujin1st\user\clients\Twitter',
+            'class'          => 'yujin1st\users\clients\Twitter',
             'consumerKey'    => 'CONSUMER_KEY',
             'consumerSecret' => 'CONSUMER_SECRET',
         ],
         'google' => [
-            'class'        => 'yujin1st\user\clients\Google',
+            'class'        => 'yujin1st\users\clients\Google',
             'clientId'     => 'clientId',
             'clientSecret' => 'CLIENT_SECRET',
         ],
@@ -151,7 +151,7 @@ with the name provided via facebook:
 // plase this code somewhere in your config files (bootstrap.php in case of using advanced app template, web.php in case
 // of using basic app template
 
-use yujin1st\user\controllers\SecurityController; 
+use yujin1st\users\controllers\SecurityController; 
 
 Event::on(SecurityController::class, SecurityController::EVENT_AFTER_AUTHENTICATE, function (AuthEvent $e) {
     // if user account was not created we should not continue

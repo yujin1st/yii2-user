@@ -7,7 +7,7 @@
 /* @var $this yii\web\View */
 
 /* @var $role \yii\rbac\Role */
-/* @var $form yujin1st\user\models\RoleForm */
+/* @var $form yujin1st\users\models\RoleForm */
 
 $this->title = ($role->description ?: $role->name) . ': Редактирование';
 $this->params['breadcrumbs'][] = ['label' => 'Роли', 'url' => ['index']];

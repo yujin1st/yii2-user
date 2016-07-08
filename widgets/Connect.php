@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace yujin1st\user\widgets;
+namespace yujin1st\users\widgets;
 
 use yii;
 use yii\authclient\ClientInterface;

@@ -11,7 +11,7 @@
 
 /**
  * @var yii\widgets\ActiveForm $form
- * @var yujin1st\user\models\User $user
+ * @var yujin1st\users\models\User $user
  */
 ?>
 

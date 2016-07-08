@@ -12,6 +12,6 @@ Yii2-user identity class:
 ```php
 'user' => [
     'class' => 'app\components\User',
-    'identityClass' => 'yujin1st\user\models\User',
+    'identityClass' => 'yujin1st\users\models\User',
 ],
 ```

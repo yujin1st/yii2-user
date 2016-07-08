@@ -12,7 +12,7 @@
 use yii\helpers\Html;
 
 /**
- * @var yujin1st\user\models\Token $token
+ * @var yujin1st\users\models\Token $token
  */
 ?>
 <p style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 1.6; font-weight: normal; margin: 0 0 10px; padding: 0;">

@@ -9,22 +9,22 @@
  * file that was distributed with this source code.
  */
 
-namespace yujin1st\user\traits;
+namespace yujin1st\users\traits;
 
 use yii\authclient\ClientInterface;
 use yii\base\Model;
 use yii\web\IdentityInterface;
-use yujin1st\user\events\AuthEvent;
-use yujin1st\user\events\ConnectEvent;
-use yujin1st\user\events\FormEvent;
-use yujin1st\user\events\ProfileEvent;
-use yujin1st\user\events\ResetPasswordEvent;
-use yujin1st\user\events\UserEvent;
-use yujin1st\user\models\Account;
-use yujin1st\user\models\Profile;
-use yujin1st\user\models\RecoveryForm;
-use yujin1st\user\models\Token;
-use yujin1st\user\models\User;
+use yujin1st\users\events\AuthEvent;
+use yujin1st\users\events\ConnectEvent;
+use yujin1st\users\events\FormEvent;
+use yujin1st\users\events\ProfileEvent;
+use yujin1st\users\events\ResetPasswordEvent;
+use yujin1st\users\events\UserEvent;
+use yujin1st\users\models\Account;
+use yujin1st\users\models\Profile;
+use yujin1st\users\models\RecoveryForm;
+use yujin1st\users\models\Token;
+use yujin1st\users\models\User;
 
 /**
  * @author Dmitry Erofeev <dmeroff@gmail.com>

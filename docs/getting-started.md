@@ -24,15 +24,15 @@ Add following lines to your main configuration file:
 ```php
 'modules' => [
     'user' => [
-        'class' => 'yujin1st\user\Module',
+        'class' => 'yujin1st\users\Module',
     ],
 ],
 ```
 
-For initialising rbac roles and permissions use event. yujin1st\user\Module::EVENT_COLLECT_ROLES
+For initialising rbac roles and permissions use event. yujin1st\users\Module::EVENT_COLLECT_ROLES
 ```php
    'on collectRoles' => function ($event) {
-      /** @var $event \yujin1st\user\events\RbacEvent */
+      /** @var $event \yujin1st\users\events\RbacEvent */
       $event->addClass(\rbac\Access::className());
     }
 ```

@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-use yujin1st\user\migrations\Migration;
+use yujin1st\users\migrations\Migration;
 
 /**
  * @author Dmitry Erofeev <dmeroff@gmail.com>

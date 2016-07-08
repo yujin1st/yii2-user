@@ -14,13 +14,13 @@
  * @var yujin1st\users\models\Token $token
  */
 ?>
-<?= Yii::t('user', 'Hello') ?>,
+<?= Yii::t('users', 'Hello') ?>,
 
-<?= Yii::t('user', 'We have received a request to reset the password for your account on {0}', Yii::$app->name) ?>.
-<?= Yii::t('user', 'Please click the link below to complete your password reset') ?>.
+<?= Yii::t('users', 'We have received a request to reset the password for your account on {0}', Yii::$app->name) ?>.
+<?= Yii::t('users', 'Please click the link below to complete your password reset') ?>.
 
 <?= $token->url ?>
 
-<?= Yii::t('user', 'If you cannot click the link, please try pasting the text into your browser') ?>.
+<?= Yii::t('users', 'If you cannot click the link, please try pasting the text into your browser') ?>.
 
-<?= Yii::t('user', 'If you did not make this request you can ignore this email') ?>.
+<?= Yii::t('users', 'If you did not make this request you can ignore this email') ?>.

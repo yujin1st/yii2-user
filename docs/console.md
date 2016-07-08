@@ -19,24 +19,24 @@ To enable console commands, you need to add module into console config of you ap
 
 ## Available console actions
 
-- **user/confirm** Confirms a user.
-- **user/create** Creates new user account.
-- **user/delete** Deletes a user.
-- **user/password** Updates user's password.
+- **users/confirm** Confirms a user.
+- **users/create** Creates new user account.
+- **users/delete** Deletes a user.
+- **users/password** Updates user's password.
 
-### user/confirm
+### users/confirm
 Confirms a user by setting confirmTime field to current time.
 
 ```sh
 
-./yii user/confirm <search> [...options...]
+./yii users/confirm <search> [...options...]
 
 - search (required): string
   Email or username
 
 ```
 
-### user/create
+### users/create
 This command creates new user account. If password is not set, this command will generate new 8-char password.
 After saving user to database, this command uses mailer component to send credentials (username and password) to
 user via email.
@@ -44,7 +44,7 @@ user via email.
 
 ```sh
 
-./yii user/create <email> <username> [password] [...options...]
+./yii users/create <email> <username> [password] [...options...]
 
 - email (required): string
   Email address
@@ -57,24 +57,24 @@ user via email.
 
 ```
 
-### user/delete
+### users/delete
 Deletes a user.
 
 ```sh
 
-./yii user/delete <search> [...options...]
+./yii users/delete <search> [...options...]
 
 - search (required): string
   Email or username
 
 ```
 
-### user/password
+### users/password
 Updates user's password to given.
 
 ```sh
 
-./yii user/password <search> <password> [...options...]
+./yii users/password <search> <password> [...options...]
 
 - search (required): string
   Email or username

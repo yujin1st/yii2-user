@@ -15,6 +15,13 @@ use yii\widgets\Menu;
 /** @var yujin1st\users\models\User $user */
 $user = Yii::$app->user->identity;
 $networksVisible = count(Yii::$app->authClientCollection->clients) > 0;
+/** @var \yujin1st\users\Module $module */
+$module = Yii::$app->getModule('users');
+$items = \yii\helpers\ArrayHelper::merge([
+  ['label' => Yii::t('users', 'Profile'), 'url' => ['/users/settings/profile']],
+  ['label' => Yii::t('users', 'Account'), 'url' => ['/users/settings/account']],
+  ['label' => Yii::t('users', 'Networks'), 'url' => ['/users/settings/networks'], 'visible' => $networksVisible],
+], $module->getUserMenu());
 
 ?>
 
@@ -30,14 +37,11 @@ $networksVisible = count(Yii::$app->authClientCollection->clients) > 0;
   </div>
   <div class="panel-body">
     <?= Menu::widget([
+      'encodeLabels' => false,
       'options' => [
         'class' => 'nav nav-pills nav-stacked',
       ],
-      'items' => [
-        ['label' => Yii::t('user', 'Profile'), 'url' => ['/user/settings/profile']],
-        ['label' => Yii::t('user', 'Account'), 'url' => ['/user/settings/account']],
-        ['label' => Yii::t('user', 'Networks'), 'url' => ['/user/settings/networks'], 'visible' => $networksVisible],
-      ],
+      'items' => $items,
     ]) ?>
   </div>
 </div>

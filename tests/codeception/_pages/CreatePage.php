@@ -12,7 +12,7 @@ use yii\codeception\BasePage;
 class CreatePage extends BasePage
 {
   /** @inheritdoc */
-  public $route = '/user/admin/create';
+  public $route = '/users/admin/create';
 
   /**
    * @param $username

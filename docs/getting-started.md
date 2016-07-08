@@ -49,12 +49,12 @@ $ php yii migrate --migrationPath=@yii/rbac/migrations
 ```
 Setup users module migration
 ```bash
-$ php yii migrate --migrationPath=@vendor/yujin1st/yii2-user/migrations
+$ php yii migrate --migrationPath=@vendor/yujin1st/yii2-users/migrations
 ```
 
 Setup all rbac rules
 ```bash
-$ php yii user/rbac/init
+$ php yii users/rbac/init
 ```
 
 

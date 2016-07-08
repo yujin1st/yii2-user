@@ -30,13 +30,13 @@ $I->seeInEmailRecipients($user->email);
 $I->amGoingTo('reset password with invalid token');
 $user = $I->getFixture('user')->getModel('user_with_expired_recoveryToken');
 $token = $I->grabRecord(Token::className(), ['userId' => $user->id, 'type' => Token::TYPE_RECOVERY]);
-$I->amOnPage(Url::toRoute(['/user/recovery/reset', 'id' => $user->id, 'code' => $token->code]));
+$I->amOnPage(Url::toRoute(['/users/recovery/reset', 'id' => $user->id, 'code' => $token->code]));
 $I->see('Recovery link is invalid or expired. Please try requesting a new one.');
 
 $I->amGoingTo('reset password');
 $user = $I->getFixture('user')->getModel('user_with_recoveryToken');
 $token = $I->grabRecord(Token::className(), ['userId' => $user->id, 'type' => Token::TYPE_RECOVERY]);
-$I->amOnPage(Url::toRoute(['/user/recovery/reset', 'id' => $user->id, 'code' => $token->code]));
+$I->amOnPage(Url::toRoute(['/users/recovery/reset', 'id' => $user->id, 'code' => $token->code]));
 $I->fillField('#recovery-form-password', 'newpass');
 $I->click('Finish');
 $I->see('Your password has been changed successfully.');

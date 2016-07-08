@@ -69,7 +69,7 @@ class UserTest extends TestCase
   }
 
   public function testenableConfirmation() {
-    \Yii::$app->getModule('user')->enableConfirmation = true;
+    \Yii::$app->getModule('users')->enableConfirmation = true;
 
     $this->specify('should return correct user confirmation status', function () {
       $user = $this->getFixture('user')->getModel('user');
@@ -82,7 +82,7 @@ class UserTest extends TestCase
         $user = User::findOne(1);
         verify('url is null for confirmed user', $user->getConfirmationUrl())->null();
         $user = User::findOne(2);
-        $needle = \Yii::$app->getUrlManager()->createAbsoluteUrl(['/user/registration/confirm',
+        $needle = \Yii::$app->getUrlManager()->createAbsoluteUrl(['/users/registration/confirm',
             'id' => $user->id,
             'token' => $user->confirmationToken
         ]);
@@ -90,7 +90,7 @@ class UserTest extends TestCase
     });
 
     $this->specify('confirmation token should become invalid after specified time', function () {
-        \Yii::$app->getModule('user')->confirmWithin = $expirationTime = 86400;
+        \Yii::$app->getModule('users')->confirmWithin = $expirationTime = 86400;
         $user = new User([
             'confirmationToken' => 'NNWJf_CoV8ocX3AsYK38CoOGkXUcpQK4',
             'confirmationSentAt' => time()
@@ -124,7 +124,7 @@ class UserTest extends TestCase
               verify($this->user->unconfirmedEmail)->null();
           });
   
-          \Yii::$app->getModule('user')->enableConfirmation = true;
+          \Yii::$app->getModule('users')->enableConfirmation = true;
   
           $this->specify('confirmation message should be sent if enableConfirmation is enabled', function () {
               $this->user->unconfirmedEmail = 'another_email@example.com';
@@ -149,7 +149,7 @@ class UserTest extends TestCase
           $this->user->sendRecoveryMessage();
   
           $this->specify('correct user confirmation url should be returned', function () {
-              $needle = \Yii::$app->getUrlManager()->createAbsoluteUrl(['/user/recovery/reset',
+              $needle = \Yii::$app->getUrlManager()->createAbsoluteUrl(['/users/recovery/reset',
                   'id' => $this->user->id,
                   'token' => $this->user->recoveryToken
               ]);
@@ -157,7 +157,7 @@ class UserTest extends TestCase
           });
   
           $this->specify('confirmation token should become invalid after specified time', function () {
-              \Yii::$app->getModule('user')->recoverWithin = $expirationTime = 86400;
+              \Yii::$app->getModule('users')->recoverWithin = $expirationTime = 86400;
               $user = new User([
                   'recoveryToken' => 'NNWJf_CoV8ocX3AsYK38CoOGkXUcpQK4',
                   'recoverySentAt' => time()

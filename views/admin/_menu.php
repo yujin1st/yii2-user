@@ -20,23 +20,23 @@ use yii\bootstrap\Nav;
   ],
   'items' => [
     [
-      'label' => Yii::t('user', 'Users'),
-      'url' => ['/user/admin/index'],
+      'label' => Yii::t('users', 'Users'),
+      'url' => ['/users/admin/index'],
     ],
     [
-      'label' => Yii::t('user', 'Roles'),
-      'url' => ['/user/role/index'],
+      'label' => Yii::t('users', 'Roles'),
+      'url' => ['/users/role/index'],
     ],
     [
-      'label' => Yii::t('user', 'Create'),
+      'label' => Yii::t('users', 'Create'),
       'items' => [
         [
-          'label' => Yii::t('user', 'New user'),
-          'url' => ['/user/admin/create'],
+          'label' => Yii::t('users', 'New user'),
+          'url' => ['/users/admin/create'],
         ],
         [
-          'label' => Yii::t('user', 'New role'),
-          'url' => ['/user/role/create'],
+          'label' => Yii::t('users', 'New role'),
+          'url' => ['/users/role/create'],
         ],
       ],
     ],

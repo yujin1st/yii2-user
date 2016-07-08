@@ -54,7 +54,7 @@ class RegistrationForm extends Model
         'username',
         'unique',
         'targetClass' => $user,
-        'message' => Yii::t('user', 'This username has already been taken')
+        'message' => Yii::t('users', 'This username has already been taken'),
       ],
       // email rules
       'emailTrim' => ['email', 'filter', 'filter' => 'trim'],
@@ -64,7 +64,7 @@ class RegistrationForm extends Model
         'email',
         'unique',
         'targetClass' => $user,
-        'message' => Yii::t('user', 'This email address has already been taken')
+        'message' => Yii::t('users', 'This email address has already been taken'),
       ],
       // password rules
       'passwordRequired' => ['password', 'required', 'skipOnEmpty' => $this->module->enableGeneratingPassword],
@@ -77,9 +77,9 @@ class RegistrationForm extends Model
    */
   public function attributeLabels() {
     return [
-      'email' => Yii::t('user', 'Email'),
-      'username' => Yii::t('user', 'Username'),
-      'password' => Yii::t('user', 'Password'),
+      'email' => Yii::t('users', 'Email'),
+      'username' => Yii::t('users', 'Username'),
+      'password' => Yii::t('users', 'Password'),
     ];
   }
 
@@ -113,7 +113,7 @@ class RegistrationForm extends Model
 
     Yii::$app->session->setFlash(
       'info',
-      Yii::t('user', 'Your account has been created and a message with further instructions has been sent to your email')
+      Yii::t('users', 'Your account has been created and a message with further instructions has been sent to your email')
     );
 
     return true;

@@ -52,8 +52,8 @@ class RecoveryForm extends Model
   /** @inheritdoc */
   public function attributeLabels() {
     return [
-      'email' => Yii::t('user', 'Email'),
-      'password' => Yii::t('user', 'Password'),
+      'email' => Yii::t('users', 'Email'),
+      'password' => Yii::t('users', 'Password'),
     ];
   }
 
@@ -76,17 +76,17 @@ class RecoveryForm extends Model
         'email',
         'exist',
         'targetClass' => $this->module->modelMap['User'],
-        'message' => Yii::t('user', 'There is no user with this email address'),
+        'message' => Yii::t('users', 'There is no user with this email address'),
       ],
       'emailUnconfirmed' => [
         'email',
         function ($attribute) {
           $this->user = User::findUserByEmail($this->email);
           if ($this->user !== null && $this->module->enableConfirmation && !$this->user->isConfirmed) {
-            $this->addError($attribute, Yii::t('user', 'You need to confirm your email address'));
+            $this->addError($attribute, Yii::t('users', 'You need to confirm your email address'));
           }
           if ($this->user->isBlocked) {
-            $this->addError($attribute, Yii::t('user', 'Your account has been blocked'));
+            $this->addError($attribute, Yii::t('users', 'Your account has been blocked'));
           }
         }
       ],
@@ -118,7 +118,7 @@ class RecoveryForm extends Model
       }
 
       Yii::$app->session->setFlash('info',
-        Yii::t('user', 'An email has been sent with instructions for resetting your password')
+        Yii::t('users', 'An email has been sent with instructions for resetting your password')
       );
 
       return true;
@@ -140,10 +140,10 @@ class RecoveryForm extends Model
     }
 
     if ($token->user->resetPassword($this->password)) {
-      Yii::$app->session->setFlash('success', Yii::t('user', 'Your password has been changed successfully.'));
+      Yii::$app->session->setFlash('success', Yii::t('users', 'Your password has been changed successfully.'));
       $token->delete();
     } else {
-      Yii::$app->session->setFlash('danger', Yii::t('user', 'An error occurred and your password has not been changed. Please try again later.'));
+      Yii::$app->session->setFlash('danger', Yii::t('users', 'An error occurred and your password has not been changed. Please try again later.'));
     }
 
     return true;

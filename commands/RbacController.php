@@ -21,7 +21,7 @@ class RbacController extends Controller
   public function actionInit() {
     $rbac = new Rbac();
     $rbac->initRolesAndActions();
-    $this->stdout(Yii::t('user', 'Roles updated') . "\n", Console::FG_GREEN);
+    $this->stdout(Yii::t('users', 'Roles updated') . "\n", Console::FG_GREEN);
   }
 
 }

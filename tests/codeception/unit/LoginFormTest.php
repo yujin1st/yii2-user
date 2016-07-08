@@ -57,7 +57,7 @@ class LoginFormTest extends TestCase
     });
 
     $this->specify('user may not be confirmed when enableUnconfirmedLogin is true', function () use ($form) {
-      \Yii::$app->getModule('user')->enableUnconfirmedLogin = true;
+      \Yii::$app->getModule('users')->enableUnconfirmedLogin = true;
       $user = \Yii::createObject(User::className());
       test::double($user, ['getIsConfirmed' => true]);
       test::double(Finder::className(), ['findUserByUsernameOrEmail' => $user]);
@@ -67,7 +67,7 @@ class LoginFormTest extends TestCase
     });
 
     $this->specify('user should be confirmed when enableUnconfirmedLogin is true', function () use ($form) {
-      \Yii::$app->getModule('user')->enableUnconfirmedLogin = false;
+      \Yii::$app->getModule('users')->enableUnconfirmedLogin = false;
       verify($form->validate())->false();
       verify($form->getErrors('login'))->contains('You need to confirm your email address');
       $user = \Yii::createObject(User::className());

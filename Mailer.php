@@ -49,7 +49,7 @@ class Mailer extends Component
    */
   public function getWelcomeSubject() {
     if ($this->welcomeSubject == null) {
-      $this->setWelcomeSubject(Yii::t('user', 'Welcome to {0}', Yii::$app->name));
+      $this->setWelcomeSubject(Yii::t('users', 'Welcome to {0}', Yii::$app->name));
     }
 
     return $this->welcomeSubject;
@@ -67,7 +67,7 @@ class Mailer extends Component
    */
   public function getConfirmationSubject() {
     if ($this->confirmationSubject == null) {
-      $this->setConfirmationSubject(Yii::t('user', 'Confirm account on {0}', Yii::$app->name));
+      $this->setConfirmationSubject(Yii::t('users', 'Confirm account on {0}', Yii::$app->name));
     }
 
     return $this->confirmationSubject;
@@ -85,7 +85,7 @@ class Mailer extends Component
    */
   public function getReconfirmationSubject() {
     if ($this->reconfirmationSubject == null) {
-      $this->setReconfirmationSubject(Yii::t('user', 'Confirm email change on {0}', Yii::$app->name));
+      $this->setReconfirmationSubject(Yii::t('users', 'Confirm email change on {0}', Yii::$app->name));
     }
 
     return $this->reconfirmationSubject;
@@ -103,7 +103,7 @@ class Mailer extends Component
    */
   public function getRecoverySubject() {
     if ($this->recoverySubject == null) {
-      $this->setRecoverySubject(Yii::t('user', 'Complete password reset on {0}', Yii::$app->name));
+      $this->setRecoverySubject(Yii::t('users', 'Complete password reset on {0}', Yii::$app->name));
     }
 
     return $this->recoverySubject;
@@ -118,7 +118,7 @@ class Mailer extends Component
 
   /** @inheritdoc */
   public function init() {
-    $this->module = Yii::$app->getModule('user');
+    $this->module = Yii::$app->getModule('users');
     parent::init();
   }
 

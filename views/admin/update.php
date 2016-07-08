@@ -19,14 +19,14 @@ use yujin1st\users\models\User;
  * @var string $content
  */
 
-$this->title = Yii::t('user', 'Update user account');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('user', 'Users'), 'url' => ['index']];
+$this->title = Yii::t('users', 'Update user account');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('users', 'Users'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>
 
 <?= $this->render('/_alert', [
-  'module' => Yii::$app->getModule('user'),
+  'module' => Yii::$app->getModule('users'),
 ]) ?>
 
 <?= $this->render('_menu') ?>
@@ -40,51 +40,51 @@ $this->params['breadcrumbs'][] = $this->title;
             'class' => 'nav-pills nav-stacked',
           ],
           'items' => [
-            ['label' => Yii::t('user', 'Account details'), 'url' => ['/user/admin/update', 'id' => $user->id]],
-            ['label' => Yii::t('user', 'Profile details'), 'url' => ['/user/admin/update-profile', 'id' => $user->id]],
-            ['label' => Yii::t('user', 'Information'), 'url' => ['/user/admin/info', 'id' => $user->id]],
+            ['label' => Yii::t('users', 'Account details'), 'url' => ['/users/admin/update', 'id' => $user->id]],
+            ['label' => Yii::t('users', 'Profile details'), 'url' => ['/users/admin/update-profile', 'id' => $user->id]],
+            ['label' => Yii::t('users', 'Information'), 'url' => ['/users/admin/info', 'id' => $user->id]],
             [
-              'label' => Yii::t('user', 'Assignments'),
-              'url' => ['/user/admin/assignments', 'id' => $user->id],
+              'label' => Yii::t('users', 'Assignments'),
+              'url' => ['/users/admin/assignments', 'id' => $user->id],
             ],
             '<hr>',
             [
-              'label' => Yii::t('user', 'Confirm'),
-              'url' => ['/user/admin/confirm', 'id' => $user->id],
+              'label' => Yii::t('users', 'Confirm'),
+              'url' => ['/users/admin/confirm', 'id' => $user->id],
               'visible' => !$user->isConfirmed,
               'linkOptions' => [
                 'class' => 'text-success',
                 'data-method' => 'post',
-                'data-confirm' => Yii::t('user', 'Are you sure you want to confirm this user?'),
+                'data-confirm' => Yii::t('users', 'Are you sure you want to confirm this user?'),
               ],
             ],
             [
-              'label' => Yii::t('user', 'Block'),
-              'url' => ['/user/admin/block', 'id' => $user->id],
+              'label' => Yii::t('users', 'Block'),
+              'url' => ['/users/admin/block', 'id' => $user->id],
               'visible' => !$user->isBlocked,
               'linkOptions' => [
                 'class' => 'text-danger',
                 'data-method' => 'post',
-                'data-confirm' => Yii::t('user', 'Are you sure you want to block this user?'),
+                'data-confirm' => Yii::t('users', 'Are you sure you want to block this user?'),
               ],
             ],
             [
-              'label' => Yii::t('user', 'Unblock'),
-              'url' => ['/user/admin/block', 'id' => $user->id],
+              'label' => Yii::t('users', 'Unblock'),
+              'url' => ['/users/admin/block', 'id' => $user->id],
               'visible' => $user->isBlocked,
               'linkOptions' => [
                 'class' => 'text-success',
                 'data-method' => 'post',
-                'data-confirm' => Yii::t('user', 'Are you sure you want to unblock this user?'),
+                'data-confirm' => Yii::t('users', 'Are you sure you want to unblock this user?'),
               ],
             ],
             [
-              'label' => Yii::t('user', 'Delete'),
-              'url' => ['/user/admin/delete', 'id' => $user->id],
+              'label' => Yii::t('users', 'Delete'),
+              'url' => ['/users/admin/delete', 'id' => $user->id],
               'linkOptions' => [
                 'class' => 'text-danger',
                 'data-method' => 'post',
-                'data-confirm' => Yii::t('user', 'Are you sure you want to delete this user?'),
+                'data-confirm' => Yii::t('users', 'Are you sure you want to delete this user?'),
               ],
             ],
           ],

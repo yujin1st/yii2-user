@@ -43,7 +43,7 @@ use yii\widgets\ActiveForm;
  * @var yujin1st\users\Module      $module
  */
 
-$this->title = Yii::t('user', 'Sign up');
+$this->title = Yii::t('users', 'Sign up');
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>
@@ -51,7 +51,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="col-md-4 col-md-offset-1">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title"><?= Yii::t('user', 'Sign in') ?></h3>
+                <h3 class="panel-title"><?= Yii::t('users', 'Sign in') ?></h3>
             </div>
             <div class="panel-body">
                 <?= Login::widget() ?>
@@ -78,13 +78,13 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?= $form->field($model, 'password')->passwordInput() ?>
                 <?php endif ?>
 
-                <?= Html::submitButton(Yii::t('user', 'Sign up'), ['class' => 'btn btn-success btn-block']) ?>
+                <?= Html::submitButton(Yii::t('users', 'Sign up'), ['class' => 'btn btn-success btn-block']) ?>
 
                 <?php ActiveForm::end(); ?>
             </div>
         </div>
         <p class="text-center">
-            <?= Html::a(Yii::t('user', 'Already registered? Sign in!'), ['/user/security/login']) ?>
+            <?= Html::a(Yii::t('users', 'Already registered? Sign in!'), ['/users/security/login']) ?>
         </p>
     </div>
 </div>

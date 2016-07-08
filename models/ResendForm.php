@@ -67,7 +67,7 @@ class ResendForm extends Model
         'email',
         function () {
           if ($this->user != null && $this->user->getIsConfirmed()) {
-            $this->addError('email', Yii::t('user', 'This account has already been confirmed'));
+            $this->addError('email', Yii::t('users', 'This account has already been confirmed'));
           }
         }
       ],
@@ -77,7 +77,7 @@ class ResendForm extends Model
   /** @inheritdoc */
   public function attributeLabels() {
     return [
-      'email' => Yii::t('user', 'Email'),
+      'email' => Yii::t('users', 'Email'),
     ];
   }
 
@@ -103,7 +103,7 @@ class ResendForm extends Model
     ]);
     $token->save(false);
     $this->mailer->sendConfirmationMessage($this->user, $token);
-    Yii::$app->session->setFlash('info', Yii::t('user', 'A message has been sent to your email address. It contains a confirmation link that you must click to complete registration.'));
+    Yii::$app->session->setFlash('info', Yii::t('users', 'A message has been sent to your email address. It contains a confirmation link that you must click to complete registration.'));
 
     return true;
   }

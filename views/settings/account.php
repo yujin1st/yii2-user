@@ -18,11 +18,11 @@ use yii\widgets\ActiveForm;
  * @var $model yujin1st\users\models\SettingsForm
  */
 
-$this->title = Yii::t('user', 'Account settings');
+$this->title = Yii::t('users', 'Account settings');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
-<?= $this->render('/_alert', ['module' => Yii::$app->getModule('user')]) ?>
+<?= $this->render('/_alert', ['module' => Yii::$app->getModule('users')]) ?>
 
 <div class="row">
   <div class="col-md-3">
@@ -57,7 +57,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <div class="form-group">
           <div class="col-lg-offset-3 col-lg-9">
-            <?= Html::submitButton(Yii::t('user', 'Save'), ['class' => 'btn btn-block btn-success']) ?><br>
+            <?= Html::submitButton(Yii::t('users', 'Save'), ['class' => 'btn btn-block btn-success']) ?><br>
           </div>
         </div>
 

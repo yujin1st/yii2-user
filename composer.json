@@ -10,7 +10,7 @@
   "type": "yii2-extension",
   "license": "MIT",
   "support": {
-    "issues": "https://github.com/yujin1st/yii2-user/issues?state=open",
+    "issues": "https://github.com/yujin1st/yii2-users/issues?state=open",
     "forum": "https://gitter.im/yujin1st/yii2-user",
     "source": "https://github.com/yujin1st/yii2-user"
   },

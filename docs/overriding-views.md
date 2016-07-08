@@ -26,7 +26,7 @@ if a view exists in the theme directory it will be used instead of the original 
 An example of overriding the registration page view is demonstrated below. First make sure you have configured view
 application component.
 
-In order to override the registration view file you should create `@app/views/user/registration/register.php`. Open it
+In order to override the registration view file you should create `@app/views/users/registration/register.php`. Open it
 and paste in the following code:
 
 ```php
@@ -40,7 +40,7 @@ use yii\widgets\ActiveForm;
  * @var yujin1st\users\models\User $user
  */
 
-$this->title = Yii::t('user', 'Sign up');
+$this->title = Yii::t('users', 'Sign up');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="alert alert-success">
@@ -63,13 +63,13 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <?= $form->field($model, 'password')->passwordInput() ?>
 
-                <?= Html::submitButton(Yii::t('user', 'Sign up'), ['class' => 'btn btn-success btn-block']) ?>
+                <?= Html::submitButton(Yii::t('users', 'Sign up'), ['class' => 'btn btn-success btn-block']) ?>
 
                 <?php ActiveForm::end(); ?>
             </div>
         </div>
         <p class="text-center">
-            <?= Html::a(Yii::t('user', 'Already registered? Sign in!'), ['/user/security/login']) ?>
+            <?= Html::a(Yii::t('users', 'Already registered? Sign in!'), ['/users/security/login']) ?>
         </p>
     </div>
 </div>

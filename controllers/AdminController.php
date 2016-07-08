@@ -196,7 +196,7 @@ class AdminController extends Controller
 
     $this->trigger(self::EVENT_BEFORE_CREATE, $event);
     if ($user->load(Yii::$app->request->post()) && $user->create()) {
-      Yii::$app->getSession()->setFlash('success', Yii::t('user', 'User has been created'));
+      Yii::$app->getSession()->setFlash('success', Yii::t('users', 'User has been created'));
       $this->trigger(self::EVENT_AFTER_CREATE, $event);
       return $this->redirect(['update', 'id' => $user->id]);
     }
@@ -222,7 +222,7 @@ class AdminController extends Controller
 
     $this->trigger(self::EVENT_BEFORE_UPDATE, $event);
     if ($user->load(Yii::$app->request->post()) && $user->save()) {
-      Yii::$app->getSession()->setFlash('success', Yii::t('user', 'Account details have been updated'));
+      Yii::$app->getSession()->setFlash('success', Yii::t('users', 'Account details have been updated'));
       $this->trigger(self::EVENT_AFTER_UPDATE, $event);
       return $this->refresh();
     }
@@ -255,7 +255,7 @@ class AdminController extends Controller
     $this->trigger(self::EVENT_BEFORE_PROFILE_UPDATE, $event);
 
     if ($profile->load(Yii::$app->request->post()) && $profile->save()) {
-      Yii::$app->getSession()->setFlash('success', Yii::t('user', 'Profile details have been updated'));
+      Yii::$app->getSession()->setFlash('success', Yii::t('users', 'Profile details have been updated'));
       $this->trigger(self::EVENT_AFTER_PROFILE_UPDATE, $event);
       return $this->refresh();
     }
@@ -302,7 +302,7 @@ class AdminController extends Controller
 
     $this->trigger(self::EVENT_BEFORE_ROLES_UPDATE, $event);
     if ($user->load(Yii::$app->request->post()) && $user->save()) {
-      Yii::$app->getSession()->setFlash('success', Yii::t('user', 'Account roles have been updated'));
+      Yii::$app->getSession()->setFlash('success', Yii::t('users', 'Account roles have been updated'));
       $this->trigger(self::EVENT_BEFORE_ROLES_UPDATE, $event);
       return $this->refresh();
     }
@@ -327,7 +327,7 @@ class AdminController extends Controller
     $model->confirm();
     $this->trigger(self::EVENT_AFTER_CONFIRM, $event);
 
-    Yii::$app->getSession()->setFlash('success', Yii::t('user', 'User has been confirmed'));
+    Yii::$app->getSession()->setFlash('success', Yii::t('users', 'User has been confirmed'));
 
     return $this->redirect(Url::previous('actions-redirect'));
   }
@@ -342,14 +342,14 @@ class AdminController extends Controller
    */
   public function actionDelete($id) {
     if ($id == Yii::$app->user->getId()) {
-      Yii::$app->getSession()->setFlash('danger', Yii::t('user', 'You can not remove your own account'));
+      Yii::$app->getSession()->setFlash('danger', Yii::t('users', 'You can not remove your own account'));
     } else {
       $model = $this->findModel($id);
       $event = $this->getUserEvent($model);
       $this->trigger(self::EVENT_BEFORE_DELETE, $event);
       $model->delete();
       $this->trigger(self::EVENT_AFTER_DELETE, $event);
-      Yii::$app->getSession()->setFlash('success', Yii::t('user', 'User has been deleted'));
+      Yii::$app->getSession()->setFlash('success', Yii::t('users', 'User has been deleted'));
     }
 
     return $this->redirect(['index']);
@@ -364,7 +364,7 @@ class AdminController extends Controller
    */
   public function actionBlock($id) {
     if ($id == Yii::$app->user->getId()) {
-      Yii::$app->getSession()->setFlash('danger', Yii::t('user', 'You can not block your own account'));
+      Yii::$app->getSession()->setFlash('danger', Yii::t('users', 'You can not block your own account'));
     } else {
       $user = $this->findModel($id);
       $event = $this->getUserEvent($user);
@@ -372,12 +372,12 @@ class AdminController extends Controller
         $this->trigger(self::EVENT_BEFORE_UNBLOCK, $event);
         $user->unblock();
         $this->trigger(self::EVENT_AFTER_UNBLOCK, $event);
-        Yii::$app->getSession()->setFlash('success', Yii::t('user', 'User has been unblocked'));
+        Yii::$app->getSession()->setFlash('success', Yii::t('users', 'User has been unblocked'));
       } else {
         $this->trigger(self::EVENT_BEFORE_BLOCK, $event);
         $user->block();
         $this->trigger(self::EVENT_AFTER_BLOCK, $event);
-        Yii::$app->getSession()->setFlash('success', Yii::t('user', 'User has been blocked'));
+        Yii::$app->getSession()->setFlash('success', Yii::t('users', 'User has been blocked'));
       }
     }
 

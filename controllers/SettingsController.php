@@ -134,7 +134,7 @@ class SettingsController extends Controller
 
     $this->trigger(self::EVENT_BEFORE_PROFILE_UPDATE, $event);
     if ($model->load(Yii::$app->request->post()) && $model->save()) {
-      Yii::$app->getSession()->setFlash('success', Yii::t('user', 'Your profile has been updated'));
+      Yii::$app->getSession()->setFlash('success', Yii::t('users', 'Your profile has been updated'));
       $this->trigger(self::EVENT_AFTER_PROFILE_UPDATE, $event);
       return $this->refresh();
     }
@@ -158,7 +158,7 @@ class SettingsController extends Controller
 
     $this->trigger(self::EVENT_BEFORE_ACCOUNT_UPDATE, $event);
     if ($model->load(Yii::$app->request->post()) && $model->save()) {
-      Yii::$app->session->setFlash('success', Yii::t('user', 'Your account details have been updated'));
+      Yii::$app->session->setFlash('success', Yii::t('users', 'Your account details have been updated'));
       $this->trigger(self::EVENT_AFTER_ACCOUNT_UPDATE, $event);
       return $this->refresh();
     }

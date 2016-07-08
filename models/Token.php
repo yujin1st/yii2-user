@@ -52,14 +52,14 @@ class Token extends ActiveRecord
   public function getUrl() {
     switch ($this->type) {
       case self::TYPE_CONFIRMATION:
-        $route = '/user/registration/confirm';
+        $route = '/users/registration/confirm';
         break;
       case self::TYPE_RECOVERY:
-        $route = '/user/recovery/reset';
+        $route = '/users/recovery/reset';
         break;
       case self::TYPE_CONFIRM_NEW_EMAIL:
       case self::TYPE_CONFIRM_OLD_EMAIL:
-        $route = '/user/settings/confirm';
+        $route = '/users/settings/confirm';
         break;
       default:
         throw new \RuntimeException();

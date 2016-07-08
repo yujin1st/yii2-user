@@ -176,8 +176,8 @@ class SecurityController extends Controller
     $account = Account::find()->byClient($client)->one();
 
     if (!$this->module->enableRegistration && ($account === null || $account->user === null)) {
-      Yii::$app->session->setFlash('danger', Yii::t('user', 'Registration on this website is disabled'));
-      $this->action->successUrl = Url::to(['/user/security/login']);
+      Yii::$app->session->setFlash('danger', Yii::t('users', 'Registration on this website is disabled'));
+      $this->action->successUrl = Url::to(['/users/security/login']);
       return;
     }
 
@@ -193,8 +193,8 @@ class SecurityController extends Controller
 
     if ($account->user instanceof User) {
       if ($account->user->isBlocked) {
-        Yii::$app->session->setFlash('danger', Yii::t('user', 'Your account has been blocked.'));
-        $this->action->successUrl = Url::to(['/user/security/login']);
+        Yii::$app->session->setFlash('danger', Yii::t('users', 'Your account has been blocked.'));
+        $this->action->successUrl = Url::to(['/users/security/login']);
       } else {
         Yii::$app->user->login($account->user, $this->module->rememberFor);
         $this->action->successUrl = Yii::$app->getUser()->getReturnUrl();
@@ -222,6 +222,6 @@ class SecurityController extends Controller
 
     $this->trigger(self::EVENT_AFTER_CONNECT, $event);
 
-    $this->action->successUrl = Url::to(['/user/settings/networks']);
+    $this->action->successUrl = Url::to(['/users/settings/networks']);
   }
 }

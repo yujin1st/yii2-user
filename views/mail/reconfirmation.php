@@ -16,18 +16,18 @@ use yii\helpers\Html;
  */
 ?>
 <p style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 1.6; font-weight: normal; margin: 0 0 10px; padding: 0;">
-  <?= Yii::t('user', 'Hello') ?>,
+  <?= Yii::t('users', 'Hello') ?>,
 </p>
 <p style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 1.6; font-weight: normal; margin: 0 0 10px; padding: 0;">
-  <?= Yii::t('user', 'We have received a request to change the email address for your account on {0}', Yii::$app->name) ?>.
-  <?= Yii::t('user', 'In order to complete your request, please click the link below') ?>.
+  <?= Yii::t('users', 'We have received a request to change the email address for your account on {0}', Yii::$app->name) ?>.
+  <?= Yii::t('users', 'In order to complete your request, please click the link below') ?>.
 </p>
 <p style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 1.6; font-weight: normal; margin: 0 0 10px; padding: 0;">
   <?= Html::a(Html::encode($token->getUrl()), $token->getUrl()); ?>
 </p>
 <p style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 1.6; font-weight: normal; margin: 0 0 10px; padding: 0;">
-  <?= Yii::t('user', 'If you cannot click the link, please try pasting the text into your browser') ?>.
+  <?= Yii::t('users', 'If you cannot click the link, please try pasting the text into your browser') ?>.
 </p>
 <p style="font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 1.6; font-weight: normal; margin: 0 0 10px; padding: 0;">
-  <?= Yii::t('user', 'If you did not make this request you can ignore this email') ?>.
+  <?= Yii::t('users', 'If you did not make this request you can ignore this email') ?>.
 </p>

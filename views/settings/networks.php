@@ -17,11 +17,11 @@ use yujin1st\users\widgets\Connect;
  * @var yii\widgets\ActiveForm $form
  */
 
-$this->title = Yii::t('user', 'Networks');
+$this->title = Yii::t('users', 'Networks');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
-<?= $this->render('/_alert', ['module' => Yii::$app->getModule('user')]) ?>
+<?= $this->render('/_alert', ['module' => Yii::$app->getModule('users')]) ?>
 
 <div class="row">
   <div class="col-md-3">
@@ -34,10 +34,10 @@ $this->params['breadcrumbs'][] = $this->title;
       </div>
       <div class="panel-body">
         <div class="alert alert-info">
-          <p><?= Yii::t('user', 'You can connect multiple accounts to be able to log in using them') ?>.</p>
+          <p><?= Yii::t('users', 'You can connect multiple accounts to be able to log in using them') ?>.</p>
         </div>
         <?php $auth = Connect::begin([
-          'baseAuthUrl' => ['/user/security/auth'],
+          'baseAuthUrl' => ['/users/security/auth'],
           'accounts' => $user->accounts,
           'autoRender' => false,
           'popupMode' => false,
@@ -53,11 +53,11 @@ $this->params['breadcrumbs'][] = $this->title;
               </td>
               <td style="width: 120px">
                 <?= $auth->isConnected($client) ?
-                  Html::a(Yii::t('user', 'Disconnect'), $auth->createClientUrl($client), [
+                  Html::a(Yii::t('users', 'Disconnect'), $auth->createClientUrl($client), [
                     'class' => 'btn btn-danger btn-block',
                     'data-method' => 'post',
                   ]) :
-                  Html::a(Yii::t('user', 'Connect'), $auth->createClientUrl($client), [
+                  Html::a(Yii::t('users', 'Connect'), $auth->createClientUrl($client), [
                     'class' => 'btn btn-success btn-block',
                   ])
                 ?>

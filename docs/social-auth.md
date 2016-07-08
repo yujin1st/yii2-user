@@ -67,7 +67,7 @@ Here is the list of clients supported by the module:
 - First of all you need to enable Google+ API in `APIs & auth` section.
 - Then you need to create new client id on `APIs & auth > Credentials` section
 - `Authorized JavaScript origins` should contain url like `http://localhost`
-- `Authorized redirect URIs` should contain url like `http://localhost/user/security/auth?authclient=google`
+- `Authorized redirect URIs` should contain url like `http://localhost/users/security/auth?authclient=google`
 
 ```php
 'google' => [
@@ -105,7 +105,7 @@ Here is the list of clients supported by the module:
 
 - You can register new application and get secret keys [here](https://oauth.yandex.com/client/new).
 - Make sure that you have enabled access to email address in `Yandex.Passport API` section.
-- Also you should set the callback url to url like `http://localhost/user/security/auth?authclient=yandex`.
+- Also you should set the callback url to url like `http://localhost/users/security/auth?authclient=yandex`.
 
 ```php
 'yandex' => [

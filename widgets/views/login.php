@@ -25,7 +25,7 @@ use yii\widgets\ActiveForm;
 <?php if (Yii::$app->user->isGuest): ?>
   <?php $form = ActiveForm::begin([
     'id' => 'login-widget-form',
-    'action' => Url::to(['/user/security/login']),
+    'action' => Url::to(['/users/security/login']),
     'enableAjaxValidation' => true,
     'enableClientValidation' => false,
     'validateOnBlur' => false,
@@ -39,11 +39,11 @@ use yii\widgets\ActiveForm;
 
   <?= $form->field($model, 'rememberMe')->checkbox() ?>
 
-  <?= Html::submitButton(Yii::t('user', 'Sign in'), ['class' => 'btn btn-primary btn-block']) ?>
+  <?= Html::submitButton(Yii::t('users', 'Sign in'), ['class' => 'btn btn-primary btn-block']) ?>
 
   <?php ActiveForm::end(); ?>
 <?php else: ?>
-  <?= Html::a(Yii::t('user', 'Logout'), ['/user/security/logout'], [
+  <?= Html::a(Yii::t('users', 'Logout'), ['/users/security/logout'], [
     'class' => 'btn btn-danger btn-block',
     'data-method' => 'post'
   ]) ?>

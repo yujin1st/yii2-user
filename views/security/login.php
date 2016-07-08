@@ -19,11 +19,11 @@ use yujin1st\users\widgets\Connect;
  * @var yujin1st\users\Module $module
  */
 
-$this->title = Yii::t('user', 'Sign in');
+$this->title = Yii::t('users', 'Sign in');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
-<?= $this->render('/_alert', ['module' => Yii::$app->getModule('user')]) ?>
+<?= $this->render('/_alert', ['module' => Yii::$app->getModule('users')]) ?>
 
 <div class="row">
   <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
@@ -43,27 +43,27 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <?= $form->field($model, 'login', ['inputOptions' => ['autofocus' => 'autofocus', 'class' => 'form-control', 'tabindex' => '1']]) ?>
 
-        <?= $form->field($model, 'password', ['inputOptions' => ['class' => 'form-control', 'tabindex' => '2']])->passwordInput()->label(Yii::t('user', 'Password') . ($module->enablePasswordRecovery ? ' (' . Html::a(Yii::t('user', 'Forgot password?'), ['/user/recovery/request'], ['tabindex' => '5']) . ')' : '')) ?>
+        <?= $form->field($model, 'password', ['inputOptions' => ['class' => 'form-control', 'tabindex' => '2']])->passwordInput()->label(Yii::t('users', 'Password') . ($module->enablePasswordRecovery ? ' (' . Html::a(Yii::t('users', 'Forgot password?'), ['/users/recovery/request'], ['tabindex' => '5']) . ')' : '')) ?>
 
         <?= $form->field($model, 'rememberMe')->checkbox(['tabindex' => '4']) ?>
 
-        <?= Html::submitButton(Yii::t('user', 'Sign in'), ['class' => 'btn btn-primary btn-block', 'tabindex' => '3']) ?>
+        <?= Html::submitButton(Yii::t('users', 'Sign in'), ['class' => 'btn btn-primary btn-block', 'tabindex' => '3']) ?>
 
         <?php ActiveForm::end(); ?>
       </div>
     </div>
     <?php if ($module->enableConfirmation): ?>
       <p class="text-center">
-        <?= Html::a(Yii::t('user', 'Didn\'t receive confirmation message?'), ['/user/registration/resend']) ?>
+        <?= Html::a(Yii::t('users', 'Didn\'t receive confirmation message?'), ['/users/registration/resend']) ?>
       </p>
     <?php endif ?>
     <?php if ($module->enableRegistration): ?>
       <p class="text-center">
-        <?= Html::a(Yii::t('user', 'Don\'t have an account? Sign up!'), ['/user/registration/register']) ?>
+        <?= Html::a(Yii::t('users', 'Don\'t have an account? Sign up!'), ['/users/registration/register']) ?>
       </p>
     <?php endif ?>
     <?= Connect::widget([
-      'baseAuthUrl' => ['/user/security/auth'],
+      'baseAuthUrl' => ['/users/security/auth'],
     ]) ?>
   </div>
 </div>

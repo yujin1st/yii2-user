@@ -18,14 +18,14 @@ use yii\helpers\Html;
  * @var yujin1st\users\models\User $user
  */
 
-$this->title = Yii::t('user', 'Create a user account');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('user', 'Users'), 'url' => ['index']];
+$this->title = Yii::t('users', 'Create a user account');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('users', 'Users'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>
 
 <?= $this->render('/_alert', [
-  'module' => Yii::$app->getModule('user'),
+  'module' => Yii::$app->getModule('users'),
 ]) ?>
 
 <?= $this->render('_menu') ?>
@@ -39,15 +39,15 @@ $this->params['breadcrumbs'][] = $this->title;
             'class' => 'nav-pills nav-stacked',
           ],
           'items' => [
-            ['label' => Yii::t('user', 'Account details'), 'url' => ['/user/admin/create']],
+            ['label' => Yii::t('users', 'Account details'), 'url' => ['/users/admin/create']],
             [
-              'label' => Yii::t('user', 'Profile details'), 'options' => [
+              'label' => Yii::t('users', 'Profile details'), 'options' => [
               'class' => 'disabled',
               'onclick' => 'return false;',
             ]
             ],
             [
-              'label' => Yii::t('user', 'Information'), 'options' => [
+              'label' => Yii::t('users', 'Information'), 'options' => [
               'class' => 'disabled',
               'onclick' => 'return false;',
             ]
@@ -61,8 +61,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="panel panel-default">
       <div class="panel-body">
         <div class="alert alert-info">
-          <?= Yii::t('user', 'Credentials will be sent to the user by email') ?>.
-          <?= Yii::t('user', 'A password will be generated automatically if not provided') ?>.
+          <?= Yii::t('users', 'Credentials will be sent to the user by email') ?>.
+          <?= Yii::t('users', 'A password will be generated automatically if not provided') ?>.
         </div>
         <?php $form = ActiveForm::begin([
           'layout' => 'horizontal',
@@ -79,7 +79,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <div class="form-group">
           <div class="col-lg-offset-3 col-lg-9">
-            <?= Html::submitButton(Yii::t('user', 'Save'), ['class' => 'btn btn-block btn-success']) ?>
+            <?= Html::submitButton(Yii::t('users', 'Save'), ['class' => 'btn btn-block btn-success']) ?>
           </div>
         </div>
 

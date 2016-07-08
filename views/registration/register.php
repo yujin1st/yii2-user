@@ -18,7 +18,7 @@ use yii\widgets\ActiveForm;
  * @var yujin1st\users\Module $module
  */
 
-$this->title = Yii::t('user', 'Sign up');
+$this->title = Yii::t('users', 'Sign up');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="row">
@@ -42,13 +42,13 @@ $this->params['breadcrumbs'][] = $this->title;
           <?= $form->field($model, 'password')->passwordInput() ?>
         <?php endif ?>
 
-        <?= Html::submitButton(Yii::t('user', 'Sign up'), ['class' => 'btn btn-success btn-block']) ?>
+        <?= Html::submitButton(Yii::t('users', 'Sign up'), ['class' => 'btn btn-success btn-block']) ?>
 
         <?php ActiveForm::end(); ?>
       </div>
     </div>
     <p class="text-center">
-      <?= Html::a(Yii::t('user', 'Already registered? Sign in!'), ['/user/security/login']) ?>
+      <?= Html::a(Yii::t('users', 'Already registered? Sign in!'), ['/users/security/login']) ?>
     </p>
   </div>
 </div>

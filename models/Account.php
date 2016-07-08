@@ -90,7 +90,7 @@ class Account extends ActiveRecord
     $code = \Yii::$app->security->generateRandomString();
     $this->updateAttributes(['code' => md5($code)]);
 
-    return Url::to(['/user/registration/connect', 'code' => $code]);
+    return Url::to(['/users/registration/connect', 'code' => $code]);
   }
 
   /**
@@ -143,7 +143,7 @@ class Account extends ActiveRecord
    */
   public static function connectWithUser(BaseClientInterface $client) {
     if (\Yii::$app->user->isGuest) {
-      \Yii::$app->session->setFlash('danger', \Yii::t('user', 'Something went wrong'));
+      \Yii::$app->session->setFlash('danger', \Yii::t('users', 'Something went wrong'));
       return;
     }
 
@@ -152,9 +152,9 @@ class Account extends ActiveRecord
     if ($account->user === null) {
       /** @noinspection PhpParamsInspection */
       $account->link('user', \Yii::$app->user->identity);
-      \Yii::$app->session->setFlash('success', \Yii::t('user', 'Your account has been connected'));
+      \Yii::$app->session->setFlash('success', \Yii::t('users', 'Your account has been connected'));
     } else {
-      \Yii::$app->session->setFlash('danger', \Yii::t('user', 'This account has already been connected to another user'));
+      \Yii::$app->session->setFlash('danger', \Yii::t('users', 'This account has already been connected to another user'));
     }
   }
 

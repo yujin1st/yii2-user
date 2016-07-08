@@ -122,7 +122,7 @@ class RegistrationController extends Controller
       $this->trigger(self::EVENT_AFTER_REGISTER, $event);
 
       return $this->render('/message', [
-        'title' => Yii::t('user', 'Your account has been created'),
+        'title' => Yii::t('users', 'Your account has been created'),
         'module' => $this->module,
       ]);
     }
@@ -199,7 +199,7 @@ class RegistrationController extends Controller
     $this->trigger(self::EVENT_AFTER_CONFIRM, $event);
 
     return $this->render('/message', [
-      'title' => Yii::t('user', 'Account confirmation'),
+      'title' => Yii::t('users', 'Account confirmation'),
       'module' => $this->module,
     ]);
   }
@@ -228,7 +228,7 @@ class RegistrationController extends Controller
       $this->trigger(self::EVENT_AFTER_RESEND, $event);
 
       return $this->render('/message', [
-        'title' => Yii::t('user', 'A new confirmation link has been sent'),
+        'title' => Yii::t('users', 'A new confirmation link has been sent'),
         'module' => $this->module,
       ]);
     }

@@ -86,7 +86,7 @@ class SettingsForm extends Model
       'currentPasswordValidate' => [
         'current_password', function ($attr) {
           if (!Password::validate($this->$attr, $this->user->passwordHash)) {
-            $this->addError($attr, Yii::t('user', 'Current password is not valid'));
+            $this->addError($attr, Yii::t('users', 'Current password is not valid'));
           }
         }
       ],
@@ -96,10 +96,10 @@ class SettingsForm extends Model
   /** @inheritdoc */
   public function attributeLabels() {
     return [
-      'email' => Yii::t('user', 'Email'),
-      'username' => Yii::t('user', 'Username'),
-      'new_password' => Yii::t('user', 'New password'),
-      'current_password' => Yii::t('user', 'Current password'),
+      'email' => Yii::t('users', 'Email'),
+      'username' => Yii::t('users', 'Username'),
+      'new_password' => Yii::t('users', 'New password'),
+      'current_password' => Yii::t('users', 'Current password'),
     ];
   }
 
@@ -147,7 +147,7 @@ class SettingsForm extends Model
    */
   protected function insecureEmailChange() {
     $this->user->email = $this->email;
-    Yii::$app->session->setFlash('success', Yii::t('user', 'Your email address has been changed'));
+    Yii::$app->session->setFlash('success', Yii::t('users', 'Your email address has been changed'));
   }
 
   /**
@@ -163,7 +163,7 @@ class SettingsForm extends Model
     ]);
     $token->save(false);
     $this->mailer->sendReconfirmationMessage($this->user, $token);
-    Yii::$app->session->setFlash('info', Yii::t('user', 'A confirmation message has been sent to your new email address'));
+    Yii::$app->session->setFlash('info', Yii::t('users', 'A confirmation message has been sent to your new email address'));
   }
 
   /**
@@ -187,6 +187,6 @@ class SettingsForm extends Model
     $this->user->flags &= ~User::OLD_EMAIL_CONFIRMED;
     $this->user->save(false);
 
-    Yii::$app->session->setFlash('info', Yii::t('user', 'We have sent confirmation links to both old and new email addresses. You must click both links to complete your request'));
+    Yii::$app->session->setFlash('info', Yii::t('users', 'We have sent confirmation links to both old and new email addresses. You must click both links to complete your request'));
   }
 }

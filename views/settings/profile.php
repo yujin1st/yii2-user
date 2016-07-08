@@ -17,11 +17,11 @@ use yii\helpers\Html;
  * @var yujin1st\users\models\Profile $profile
  */
 
-$this->title = Yii::t('user', 'Profile settings');
+$this->title = Yii::t('users', 'Profile settings');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
-<?= $this->render('/_alert', ['module' => Yii::$app->getModule('user')]) ?>
+<?= $this->render('/_alert', ['module' => Yii::$app->getModule('users')]) ?>
 
 <div class="row">
   <div class="col-md-3">
@@ -55,13 +55,14 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <?= $form->field($model, 'timezone')->dropDownList(\yii\helpers\ArrayHelper::map(\yujin1st\users\helpers\Timezone::getAll(), 'timezone', 'name')); ?>
 
-        <?= $form->field($model, 'gravatar_email')->hint(\yii\helpers\Html::a(Yii::t('user', 'Change your avatar at Gravatar.com'), 'http://gravatar.com')) ?>
+        <?= $form->field($model, 'gravatar_email')->hint(\yii\helpers\Html::a(Yii::t('users', 'Change your avatar at Gravatar.com'), 'http://gravatar.com')) ?>
 
         <?= $form->field($model, 'bio')->textarea() ?>
 
         <div class="form-group">
           <div class="col-lg-offset-3 col-lg-9">
-            <?= \yii\helpers\Html::submitButton(Yii::t('user', 'Save'), ['class' => 'btn btn-block btn-success']) ?><br>
+            <?= \yii\helpers\Html::submitButton(Yii::t('users', 'Save'), ['class' => 'btn btn-block btn-success']) ?>
+            <br>
           </div>
         </div>
 

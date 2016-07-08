@@ -35,12 +35,12 @@ class ManageController extends Controller
   public function actionConfirm($search) {
     $user = User::findIdentityByUsernameOrEmail($search);
     if ($user === null) {
-      $this->stdout(Yii::t('user', 'User is not found') . "\n", Console::FG_RED);
+      $this->stdout(Yii::t('users', 'User is not found') . "\n", Console::FG_RED);
     } else {
       if ($user->confirm()) {
-        $this->stdout(Yii::t('user', 'User has been confirmed') . "\n", Console::FG_GREEN);
+        $this->stdout(Yii::t('users', 'User has been confirmed') . "\n", Console::FG_GREEN);
       } else {
-        $this->stdout(Yii::t('user', 'Error occurred while confirming user') . "\n", Console::FG_RED);
+        $this->stdout(Yii::t('users', 'Error occurred while confirming user') . "\n", Console::FG_RED);
       }
     }
   }
@@ -63,9 +63,9 @@ class ManageController extends Controller
     ]);
 
     if ($user->create()) {
-      $this->stdout(Yii::t('user', 'User has been created') . "!\n", Console::FG_GREEN);
+      $this->stdout(Yii::t('users', 'User has been created') . "!\n", Console::FG_GREEN);
     } else {
-      $this->stdout(Yii::t('user', 'Please fix following errors:') . "\n", Console::FG_RED);
+      $this->stdout(Yii::t('users', 'Please fix following errors:') . "\n", Console::FG_RED);
       foreach ($user->errors as $errors) {
         foreach ($errors as $error) {
           $this->stdout(' - ' . $error . "\n", Console::FG_RED);
@@ -80,15 +80,15 @@ class ManageController extends Controller
    * @param string $search Email or username
    */
   public function actionDelete($search) {
-    if ($this->confirm(Yii::t('user', 'Are you sure? Deleted user can not be restored'))) {
+    if ($this->confirm(Yii::t('users', 'Are you sure? Deleted user can not be restored'))) {
       $user = User::findIdentityByUsernameOrEmail($search);
       if ($user === null) {
-        $this->stdout(Yii::t('user', 'User is not found') . "\n", Console::FG_RED);
+        $this->stdout(Yii::t('users', 'User is not found') . "\n", Console::FG_RED);
       } else {
         if ($user->delete()) {
-          $this->stdout(Yii::t('user', 'User has been deleted') . "\n", Console::FG_GREEN);
+          $this->stdout(Yii::t('users', 'User has been deleted') . "\n", Console::FG_GREEN);
         } else {
-          $this->stdout(Yii::t('user', 'Error occurred while deleting user') . "\n", Console::FG_RED);
+          $this->stdout(Yii::t('users', 'Error occurred while deleting user') . "\n", Console::FG_RED);
         }
       }
     }
@@ -103,12 +103,12 @@ class ManageController extends Controller
   public function actionPassword($search, $password) {
     $user = User::findIdentityByUsernameOrEmail($search);
     if ($user === null) {
-      $this->stdout(Yii::t('user', 'User is not found') . "\n", Console::FG_RED);
+      $this->stdout(Yii::t('users', 'User is not found') . "\n", Console::FG_RED);
     } else {
       if ($user->resetPassword($password)) {
-        $this->stdout(Yii::t('user', 'Password has been changed') . "\n", Console::FG_GREEN);
+        $this->stdout(Yii::t('users', 'Password has been changed') . "\n", Console::FG_GREEN);
       } else {
-        $this->stdout(Yii::t('user', 'Error occurred while changing password') . "\n", Console::FG_RED);
+        $this->stdout(Yii::t('users', 'Error occurred while changing password') . "\n", Console::FG_RED);
       }
     }
   }
@@ -124,9 +124,9 @@ class ManageController extends Controller
     if ($user) {
       $rbac = new Rbac();
       $rbac->setAdminRole($user);
-      $this->stdout(Yii::t('user', 'Admin rights granted') . "\n", Console::FG_GREEN);
+      $this->stdout(Yii::t('users', 'Admin rights granted') . "\n", Console::FG_GREEN);
     } else {
-      $this->stdout(Yii::t('user', 'User is not found') . "\n", Console::FG_RED);
+      $this->stdout(Yii::t('users', 'User is not found') . "\n", Console::FG_RED);
     }
   }
 }

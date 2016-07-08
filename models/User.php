@@ -170,14 +170,14 @@ class User extends ActiveRecord implements IdentityInterface
   /** @inheritdoc */
   public function attributeLabels() {
     return [
-      'username' => Yii::t('user', 'Username'),
-      'email' => Yii::t('user', 'Email'),
-      'registrationIp' => Yii::t('user', 'Registration ip'),
-      'unconfirmedEmail' => Yii::t('user', 'New email'),
-      'password' => Yii::t('user', 'Password'),
-      'createTime' => Yii::t('user', 'Registration time'),
-      'confirmTime' => Yii::t('user', 'Confirmation time'),
-      'roles' => Yii::t('user', 'Roles'),
+      'username' => Yii::t('users', 'Username'),
+      'email' => Yii::t('users', 'Email'),
+      'registrationIp' => Yii::t('users', 'Registration ip'),
+      'unconfirmedEmail' => Yii::t('users', 'New email'),
+      'password' => Yii::t('users', 'Password'),
+      'createTime' => Yii::t('users', 'Registration time'),
+      'confirmTime' => Yii::t('users', 'Confirmation time'),
+      'roles' => Yii::t('users', 'Roles'),
     ];
   }
 
@@ -222,7 +222,7 @@ class User extends ActiveRecord implements IdentityInterface
       ],
       'usernameMatch' => ['username', 'match', 'pattern' => static::$usernameRegexp],
       'usernameLength' => ['username', 'string', 'min' => 3, 'max' => 255],
-      'usernameUnique' => ['username', 'unique', 'message' => Yii::t('user', 'This username has already been taken')],
+      'usernameUnique' => ['username', 'unique', 'message' => Yii::t('users', 'This username has already been taken')],
       'usernameTrim' => ['username', 'trim'],
 
       // email rules
@@ -234,7 +234,7 @@ class User extends ActiveRecord implements IdentityInterface
       ],
       'emailPattern' => ['email', 'email'],
       'emailLength' => ['email', 'string', 'max' => 255],
-      'emailUnique' => ['email', 'unique', 'message' => Yii::t('user', 'This email address has already been taken')],
+      'emailUnique' => ['email', 'unique', 'message' => Yii::t('users', 'This email address has already been taken')],
       'emailTrim' => ['email', 'trim'],
 
       // password rules
@@ -324,13 +324,13 @@ class User extends ActiveRecord implements IdentityInterface
       $token->delete();
       if (($success = $this->confirm())) {
         Yii::$app->user->login($this, $this->module->rememberFor);
-        $message = Yii::t('user', 'Thank you, registration is now complete.');
+        $message = Yii::t('users', 'Thank you, registration is now complete.');
       } else {
-        $message = Yii::t('user', 'Something went wrong and your account has not been confirmed.');
+        $message = Yii::t('users', 'Something went wrong and your account has not been confirmed.');
       }
     } else {
       $success = false;
-      $message = Yii::t('user', 'The confirmation link is invalid or expired. Please try requesting a new one.');
+      $message = Yii::t('users', 'The confirmation link is invalid or expired. Please try requesting a new one.');
     }
 
     Yii::$app->session->setFlash($success ? 'success' : 'danger', $message);
@@ -355,22 +355,22 @@ class User extends ActiveRecord implements IdentityInterface
       ->one();
 
     if (empty($this->unconfirmedEmail) || $token === null || $token->isExpired) {
-      Yii::$app->session->setFlash('danger', Yii::t('user', 'Your confirmation token is invalid or expired'));
+      Yii::$app->session->setFlash('danger', Yii::t('users', 'Your confirmation token is invalid or expired'));
     } else {
       $token->delete();
 
       if (empty($this->unconfirmedEmail)) {
-        Yii::$app->session->setFlash('danger', Yii::t('user', 'An error occurred processing your request'));
+        Yii::$app->session->setFlash('danger', Yii::t('users', 'An error occurred processing your request'));
       } elseif (User::find()->andWhere(['email' => $this->unconfirmedEmail])->exists() == false) {
         if ($this->module->emailChangeStrategy == Module::STRATEGY_SECURE) {
           switch ($token->type) {
             case Token::TYPE_CONFIRM_NEW_EMAIL:
               $this->flags |= self::NEW_EMAIL_CONFIRMED;
-              Yii::$app->session->setFlash('success', Yii::t('user', 'Awesome, almost there. Now you need to click the confirmation link sent to your old email address'));
+              Yii::$app->session->setFlash('success', Yii::t('users', 'Awesome, almost there. Now you need to click the confirmation link sent to your old email address'));
               break;
             case Token::TYPE_CONFIRM_OLD_EMAIL:
               $this->flags |= self::OLD_EMAIL_CONFIRMED;
-              Yii::$app->session->setFlash('success', Yii::t('user', 'Awesome, almost there. Now you need to click the confirmation link sent to your new email address'));
+              Yii::$app->session->setFlash('success', Yii::t('users', 'Awesome, almost there. Now you need to click the confirmation link sent to your new email address'));
               break;
           }
         }
@@ -378,7 +378,7 @@ class User extends ActiveRecord implements IdentityInterface
         if ($this->module->emailChangeStrategy == Module::STRATEGY_DEFAULT || ($this->flags & self::NEW_EMAIL_CONFIRMED && $this->flags & self::OLD_EMAIL_CONFIRMED)) {
           $this->email = $this->unconfirmedEmail;
           $this->unconfirmedEmail = null;
-          Yii::$app->session->setFlash('success', Yii::t('user', 'Your email address has been changed'));
+          Yii::$app->session->setFlash('success', Yii::t('users', 'Your email address has been changed'));
         }
         $this->save(false);
       }

@@ -19,7 +19,7 @@ use yii\widgets\ActiveForm;
  * @var yujin1st\users\models\Account $account
  */
 
-$this->title = Yii::t('user', 'Sign in');
+$this->title = Yii::t('users', 'Sign in');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="row">
@@ -31,7 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
       <div class="panel-body">
         <div class="alert alert-info">
           <p>
-            <?= Yii::t('user', 'In order to finish your registration, we need you to enter following fields') ?>:
+            <?= Yii::t('users', 'In order to finish your registration, we need you to enter following fields') ?>:
           </p>
         </div>
         <?php $form = ActiveForm::begin([
@@ -42,13 +42,13 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <?= $form->field($model, 'username') ?>
 
-        <?= Html::submitButton(Yii::t('user', 'Continue'), ['class' => 'btn btn-success btn-block']) ?>
+        <?= Html::submitButton(Yii::t('users', 'Continue'), ['class' => 'btn btn-success btn-block']) ?>
 
         <?php ActiveForm::end(); ?>
       </div>
     </div>
     <p class="text-center">
-      <?= Html::a(Yii::t('user', 'If you already registered, sign in and connect this account on settings page'), ['/user/settings/networks']) ?>.
+      <?= Html::a(Yii::t('users', 'If you already registered, sign in and connect this account on settings page'), ['/users/settings/networks']) ?>.
     </p>
   </div>
 </div>

@@ -95,5 +95,5 @@ module property. You can read more about mailer configuration [here](docs/mailer
 ],
 ```
 
-- Urls `user/settings/email` and `user/settings/password` have been merged into
-a new one `user/settings/account`.
+- Urls `users/settings/email` and `users/settings/password` have been merged into
+a new one `users/settings/account`.

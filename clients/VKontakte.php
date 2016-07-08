@@ -36,6 +36,6 @@ class VKontakte extends BaseVKontakte implements ClientInterface
 
   /** @inheritdoc */
   protected function defaultTitle() {
-    return Yii::t('user', 'VKontakte');
+    return Yii::t('users', 'VKontakte');
   }
 }

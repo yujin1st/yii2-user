@@ -39,7 +39,7 @@ class Profile extends ActiveRecord
 
   /** @inheritdoc */
   public function init() {
-    $this->module = \Yii::$app->getModule('user');
+    $this->module = \Yii::$app->getModule('users');
   }
 
   /**
@@ -84,13 +84,13 @@ class Profile extends ActiveRecord
    */
   public function attributeLabels() {
     return [
-      'name' => \Yii::t('user', 'Name'),
-      'public_email' => \Yii::t('user', 'Email (public)'),
-      'gravatar_email' => \Yii::t('user', 'Gravatar email'),
-      'location' => \Yii::t('user', 'Location'),
-      'website' => \Yii::t('user', 'Website'),
-      'bio' => \Yii::t('user', 'Bio'),
-      'timezone' => \Yii::t('user', 'Time zone'),
+      'name' => \Yii::t('users', 'Name'),
+      'public_email' => \Yii::t('users', 'Email (public)'),
+      'gravatar_email' => \Yii::t('users', 'Gravatar email'),
+      'location' => \Yii::t('users', 'Location'),
+      'website' => \Yii::t('users', 'Website'),
+      'bio' => \Yii::t('users', 'Bio'),
+      'timezone' => \Yii::t('users', 'Time zone'),
     ];
   }
 
@@ -102,7 +102,7 @@ class Profile extends ActiveRecord
    */
   public function validateTimeZone($attribute) {
     if (!in_array($this->$attribute, timezone_identifiers_list())) {
-      $this->addError($attribute, \Yii::t('user', 'Time zone is not valid'));
+      $this->addError($attribute, \Yii::t('users', 'Time zone is not valid'));
     }
   }
 

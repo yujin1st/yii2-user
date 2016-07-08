@@ -70,7 +70,7 @@ class Rbac extends yii\base\Component
    */
   public function loadClasses() {
     $event = new RbacEvent();
-    Yii::$app->getModule('user')->trigger(Module::EVENT_COLLECT_ROLES, $event);
+    Yii::$app->getModule('users')->trigger(Module::EVENT_COLLECT_ROLES, $event);
     return $event->classes;
   }
 

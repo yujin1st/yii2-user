@@ -16,6 +16,7 @@ use yii\authclient\Collection;
 use yii\base\Module as BaseModule;
 use yii\console\Application as ConsoleApplication;
 use yii\i18n\PhpMessageSource;
+use yujin1st\users\events\BuildUserMenuEvent;
 use yujin1st\users\events\RbacEvent;
 use yujin1st\users\rbac\Access;
 
@@ -86,6 +87,8 @@ class Module extends BaseModule
 
   /** global event for collecting app rbac rules */
   const EVENT_COLLECT_ROLES = 'collectRoles';
+
+  const EVENT_BUILD_USER_MENU = 'buildUserMenu';
 
   /**
    * @var string The prefix for user module URL.
@@ -167,7 +170,7 @@ class Module extends BaseModule
 
       Yii::$container->set('yii\web\User', [
         'enableAutoLogin' => true,
-        'loginUrl' => ['/user/security/login'],
+        'loginUrl' => ['/users/security/login'],
         'identityClass' => $this->modelMap['User'],
       ]);
 
@@ -180,8 +183,8 @@ class Module extends BaseModule
 
     $this->setUrlRules();
 
-    if (!isset($app->get('i18n')->translations['user*'])) {
-      $app->get('i18n')->translations['user*'] = [
+    if (!isset($app->get('i18n')->translations['users*'])) {
+      $app->get('i18n')->translations['users*'] = [
         'class' => PhpMessageSource::className(),
         'basePath' => __DIR__ . '/messages',
         'sourceLanguage' => 'en-US'
@@ -195,6 +198,22 @@ class Module extends BaseModule
 
 
     Yii::$container->set('yujin1st\users\Mailer', $this->mailer);
+  }
+
+
+  /**
+   * Collecting side menu over modules
+   */
+  public function getUserMenu() {
+    $event = new BuildUserMenuEvent();
+    $this->trigger(self::EVENT_BUILD_USER_MENU, $event);
+    $menu = [];
+    foreach ($event->items as $block => $items) {
+      foreach ($items as $item) {
+        $menu[] = $item;
+      }
+    }
+    return $menu;
   }
 
 }

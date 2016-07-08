@@ -25,7 +25,7 @@ use yii\bootstrap\Html;
   'options' => [
     'class' => 'alert-info',
   ],
-  'body' => Yii::t('user', 'You can assign multiple roles or permissions to user by using the form below'),
+  'body' => Yii::t('users', 'You can assign multiple roles or permissions to user by using the form below'),
 ]) ?>
 
 
@@ -49,7 +49,7 @@ use yii\bootstrap\Html;
 
 <div class="form-group">
   <div class="col-lg-offset-3 col-lg-9">
-    <?= Html::submitButton(Yii::t('user', 'Update'), ['class' => 'btn btn-block btn-success']) ?>
+    <?= Html::submitButton(Yii::t('users', 'Update'), ['class' => 'btn btn-block btn-success']) ?>
   </div>
 </div>
 

@@ -12,7 +12,7 @@ use yii\codeception\BasePage;
 class UpdatePage extends BasePage
 {
   /** @inheritdoc */
-  public $route = '/user/admin/update';
+  public $route = '/users/admin/update';
 
   /**
    * @param $username

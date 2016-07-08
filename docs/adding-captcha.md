@@ -44,7 +44,7 @@ public property named **captcha** and validation rules.
 ## 2. Adding widget to the view
 
 Before doing this step you have to configure view application component as described in guide. After this done you have
-to create new file named `register.php` in `@app/views/user/registration`. Now you have to add widget to registration
+to create new file named `register.php` in `@app/views/users/registration`. Now you have to add widget to registration
 form, just copy and paste following code into newly created view file.
 
 ```php
@@ -60,7 +60,7 @@ form, just copy and paste following code into newly created view file.
      * @var yii\widgets\ActiveForm $form
      * @var app\models\RegistrationForm $model
      */
-    $this->title = Yii::t('user', 'Sign up');
+    $this->title = Yii::t('users', 'Sign up');
     $this->params['breadcrumbs'][] = $this->title;
     ?>
     <div class="row">
@@ -84,13 +84,13 @@ form, just copy and paste following code into newly created view file.
                         'captchaAction' => ['/site/captcha']
                     ]) ?>
 
-                    <?= Html::submitButton(Yii::t('user', 'Sign up'), ['class' => 'btn btn-success btn-block']) ?>
+                    <?= Html::submitButton(Yii::t('users', 'Sign up'), ['class' => 'btn btn-success btn-block']) ?>
 
                     <?php ActiveForm::end(); ?>
                 </div>
             </div>
             <p class="text-center">
-                <?= Html::a(Yii::t('user', 'Already registered? Sign in!'), ['/user/security/login']) ?>
+                <?= Html::a(Yii::t('users', 'Already registered? Sign in!'), ['/users/security/login']) ?>
             </p>
         </div>
     </div>

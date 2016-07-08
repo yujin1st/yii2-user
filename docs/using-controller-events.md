@@ -17,7 +17,7 @@ message on a blank page:
         'registration' => [
             'class' => \yujin1st\users\controllers\RegistrationController::className(),
             'on ' . \yujin1st\users\controllers\RegistrationController::EVENT_AFTER_REGISTER => function ($e) {
-                Yii::$app->response->redirect(array('/user/security/login'))->send();
+                Yii::$app->response->redirect(array('/users/security/login'))->send();
                 Yii::$app->end();
             }
         ],
